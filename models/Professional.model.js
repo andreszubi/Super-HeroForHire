@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
-const clientSchema = new Schema(
+const proSchema = new Schema(
   {
     name: {
       type: String,
@@ -23,13 +23,21 @@ const clientSchema = new Schema(
       required: true
     },
     phone: {
-      type: Number,
+      type: String,
       required: true
     },
+    services: {
+        type: String,
+        required: true
+    },
+    specialties: {
+        type: String,
+        required: true
+    }
 
   }
 );
 
-const Client = model("User", clientSchema);
+const Professional = model("Professional", proSchema);
 
-module.exports = Client;
+module.exports = Professional;
