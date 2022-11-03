@@ -1,7 +1,7 @@
 <h1>
      SuperheroForHire  🚀
 </h1>
-<form class="login form" method="POST" action="">
+<form class="login-form" method="POST" action="/auth/client-signin">
     <label>Email:<input type="text" name="email" required /></label>
     <label>Password:<input type="password" name="password" required /></label>
     <button type="submit">Login</button>
@@ -9,7 +9,7 @@
 
 <!-- /* Client signup */ -->
 
-<a href=" "><button class="signUp1">Sign up</button></a>
+<a href=" "><button class="client-signup">Sign up</button></a>
 
-<a href=" ">Register as a Professional</a>
-<a href=""><button class="signUp2">Log in as a Professional</button></a>
+<a href="/auth/pro/pro-signup"><button class="pro-signup">Register as a Pro</button> </a>
+<a href="/auth/pro/pro-signin"><button class="pro-signin">Log in as a Pro</button></a>

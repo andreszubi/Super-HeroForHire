@@ -7,33 +7,33 @@ const saltRounds = 10;
 
 // GET route for displaying the signup form
 
-router.get('/auth/pro-signup', (req, res, next) => {
+router.get('/pro-signup', (req, res, next) => {
     res.render('auth/pro-signup');
 });
 
-router.post('/auth/pro/pro-signup', async (req, res, next) => {
+router.post('/pro-signup', async (req, res, next) => {
  const {email, password, name, address,phone, services} = req.body;
     if (email === '' || password === '') {
-        res.render('signup/pro-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
+        res.render('auth/pro-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
     }
     const emailRegex = /@/;
     if (!emailRegex.test(email)) {
-        res.render('signup/pro-signup', { errorMessage: 'Email format is not valid.' });
+        res.render('auth/pro-signup', { errorMessage: 'Email format is not valid.' });
         return;
     }
     const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
     if (!passwordRegex.test(password)) {
-        res.render('signup/pro-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+        res.render('auth/pro-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
         return;
     }
     if (services.length === 0) {
-        res.render('signup/pro-sign-up', { errorMessage: 'You must select at least one service.' });
+        res.render('auth/pro-sign-up', { errorMessage: 'You must select at least one service.' });
         return;
     }
 
     if (price < 0) {
-        res.render('signup/pro-sign-up', { errorMessage: 'Price per hour must be filled out.' });
+        res.render('auth/pro-sign-up', { errorMessage: 'Price per hour must be filled out.' });
         return;
     }
 
@@ -50,12 +50,12 @@ router.post('/auth/pro/pro-signup', async (req, res, next) => {
             price,
             services
         });
-        res.redirect('auth/pro-profile');
+        res.redirect('/pro-profile');
     } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
-            res.status(500).render('signup/pro-signup', { errorMessage: error.message });
+            res.status(500).render('auth/pro-signup', { errorMessage: error.message });
         } else if (error.code === 11000) {
-            res.status(500).render('signup/pro-signup', {
+            res.status(500).render('auth/pro-signup', {
                 errorMessage: 'Email needs to be unique. The email is already used.'
             });
         } else {
