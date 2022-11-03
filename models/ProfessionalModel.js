@@ -18,7 +18,7 @@ const proSchema = new Schema(
       type: String,
       required: true
     },
-    address: {
+    postalcode: {
       type: String,
       required: true
     },
