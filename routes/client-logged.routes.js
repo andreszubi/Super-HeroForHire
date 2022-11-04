@@ -4,16 +4,13 @@ const Client = require("../models/Client.model");
 const bcrypt = require("bcryptjs");
 const app = require("../app");
 
-const saltRounds = 10;
-
 // GET route for displaying the signup form
 
 router.get("/client-signup", (req, res, next) => {
   res.render("auth/client-signup");
 });
 
-router.post('/auth/client/client-signup', async (req, res, next) => {
-    const {email, password} = req.body;
+router.post('/client-signup', async (req, res, next) => {
    /* if (email === '' || password === '') {
         res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
@@ -28,9 +25,11 @@ router.post('/auth/client/client-signup', async (req, res, next) => {
         res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
         return;
     } */
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+    
     try {
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+
         await Client.create({
             fullname: req.body.fullname,
             email: req.body.email,
@@ -38,7 +37,7 @@ router.post('/auth/client/client-signup', async (req, res, next) => {
             postalcode: req.body.postalcode,
             phone: req.body.phone,
         });
-        res.redirect('/auth/client-login');
+        res.redirect('/auth/client/client-login');
     } catch (error) {
        console.log(error.message)
        res.render('auth/client-signup', { errorMessage: 'Something went wrong. Please try again.' });
