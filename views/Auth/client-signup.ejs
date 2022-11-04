@@ -1,14 +1,19 @@
 <h2>Client Signup</h2>
 <form action="/auth/client/client-signup" method="post">
-    <label for="">Full Name:  <input type="text" name="name" placeholder="Full Name" /> </label>
+    <label>Full Name:  <input <% if (typeof errorMessage !== 'undefined') { %> style="border-color: red;" <% }
+    %>} type="text" name="fullname" placeholder="Full Name" required /> </label>
 
-    <label for="">Email: <input type="email" name="email" placeholder="Email" />  </label>
+    <label>Email: <input <% if (typeof errorMessage !== 'undefined') { %> style="border-color: red;" <% }
+        %>} type="email" name="email" placeholder="Email" required />  </label>
 
-   <label for="">Password:  <input type="text" name="password" placeholder="Password" /> </label> 
+   <label>Password:  <input <% if (typeof errorMessage !== 'undefined') { %> style="border-color: red;" <% }
+    %>}  type="text" name="password" placeholder="Password" required /> </label> 
 
-    <label for="">Address: <input type="text" name="address" placeholder="Address" /> </label>
+    <label>Postal Code: <input <% if (typeof errorMessage !== 'undefined') { %> style="border-color: red;" <% }
+        %>}  type="text" name="postalcode" placeholder="Postal Code" required /> </label>
 
-    <label for="">Phone Number: <input type="number" name="phone" placeholder="Phone Number"</label>
+    <label>Phone Number: <input <% if (typeof errorMessage !== 'undefined') { %> style="border-color: red;" <% }
+        %>}  type="number" name="phone" placeholder="Phone Number" required /></label>
    
     <button type="submit">Signup</button>
 </form>

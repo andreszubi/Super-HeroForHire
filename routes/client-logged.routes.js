@@ -13,7 +13,7 @@ router.get("/client-signup", (req, res, next) => {
 });
 
 router.post('/auth/client/client-signup', async (req, res, next) => {
-    const {email, password, name, address,phone} = req.body;
+    const {email, password} = req.body;
    /* if (email === '' || password === '') {
         res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
@@ -38,7 +38,7 @@ router.post('/auth/client/client-signup', async (req, res, next) => {
             postalcode: req.body.postalcode,
             phone: req.body.phone,
         });
-        res.redirect('auth/client-login');
+        res.redirect('/auth/client-login');
     } catch (error) {
        console.log(error.message)
        res.render('auth/client-signup', { errorMessage: 'Something went wrong. Please try again.' });
