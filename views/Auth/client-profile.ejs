@@ -1,19 +1,14 @@
-<h1>Client Profile</h1>
+<h1>Welcome <%client.name %>!</h1>
 
-<!-- /*EDIT*/ -->
+<h2>What are you searching for today?</h2>
 
-<label for="">Full Name: <input type="text" name="name" placeholder="Full Name" /> </label>
-
-<label for="">Email: <input type="email" name="email" placeholder="Email" /> </label>
-
-<label for="">Password: <input type="text" name="password" placeholder="Password" /> </label>
-
-<label for="">Address: <input type="text" name="address" placeholder="Address" /> </label>
-
-<label for="">Phone Number: <input type="number" name="phone" placeholder="Phone Number" /></label>
-
-<button type="submit">Signup</button>
-
+<!-- Display choices of services that clients are looking for-->
+<% for (var i = 0; i < services.length; i++) { %>
+  <div class="service">
+    <h3><%= services[i].name %></h3>
+    <p><%= services[i].description %></p>
+    <button><a href="/services/<%= services[i].id %>">View Details</a></button>
+  </div>
 
 <h3>Edit profile</h3>
 <h3>Delete profile</h3>

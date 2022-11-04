@@ -13,7 +13,7 @@ router.get('/client-signup', (req, res, next) => {
     res.render('auth/client-signup');
 });
 
-router.post('/client-signup', async (req, res, next) => {
+router.post('/auth/client/client-signup', async (req, res, next) => {
     const {email, password, name, address,phone} = req.body;
     if (email === '' || password === '') {
         res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
@@ -35,27 +35,41 @@ router.post('/client-signup', async (req, res, next) => {
         await Client.create({
             email,
             password: hashedPassword,
-            name,
+            fullname,
             address,
             phone,
         });
-        res.redirect('auth/client-profile');
+        res.redirect('auth/client-login');
     } catch (error) {
-        if (error instanceof mongoose.Error.ValidationError) {
-            res.status(500).render('signup/client-signup', { errorMessage: error.message });
-        } else if (error.code === 11000) {
-            res.status(500).render('auth/client-signup', {
-                errorMessage: 'Email needs to be unique. The email is already used.'
-            });
-        } else {
-            next(error);
-        }
+       console.log(error.message)
+       res.render('auth/client-signup', { errorMessage: 'Something went wrong. Please try again.' });
     } 
 });
 
-router.get('/client-profile', (req, res, next) => {
-    res.render('auth/client-profile');
+// GET route for displaying the login form
+router.get('/client-login', (req, res, next) => {
+    res.render('auth/client-login');
 });
+
+router.post('/client-login', async (req, res, next) => {
+    const {email, password} = req.body;
+   const currentUser = await Client.findOne({email});
+    if (!currentUser) {
+        res.render('auth/client-login', { errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
+        return;
+    }
+    if (bcrypt.compareSync(password, currentUser.password)) {
+        req.session.currentUser = currentUser;
+        res.redirect('/client-profile');
+    }
+});
+
+// GET route for displaying the client profile page
+router.get('/client-profile', (req, res, next) => {
+    res.render('client/client-profile', { userInSession: req.session.currentUser });
+});
+
+
 
 
  
