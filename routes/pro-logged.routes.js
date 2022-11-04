@@ -104,7 +104,7 @@ router.post("/pro-login", async (req, res) => {
     if (bcrypt.compareSync(password, loggedProUser.password)) {
       //User with right password//
       req.session.professional = loggedProUser;
-      res.redirect("auth/pro-profile");
+      res.redirect("/auth/pro/pro-profile");
     } else {
       //User and incorrect password//
       res.render("auth/pro-login", {
@@ -119,6 +119,15 @@ router.post("/pro-login", async (req, res) => {
   //   if (checkPassword) {
 
   //   }
+});
+
+router.get("/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+    }
+    res.redirect("/home");
+  });
 });
 
 module.exports = router;

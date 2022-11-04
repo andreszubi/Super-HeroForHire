@@ -1,6 +1,12 @@
 <h2>Professional Login Page</h2>
 <form action="/auth/pro/pro-login" method="post">
-    <label for="">Email: <input type="email" name="email" placeholder="Email" /> </label>
-    <label for="">Password: <input type="text" name="password" placeholder="Password" /> </label>
+    <label>Email: <input type="email" name="email" placeholder="Email" /> </label>
+    <label>Password: <input type="password" name="password" placeholder="Password" /> </label>
     <button type="submit">Login</button>
 </form>
+
+<% if (typeof errorMessage !=='undefined' ) { %>
+    <p style="color: red">
+        <%= errorMessage %>
+    </p>
+    <% } %>

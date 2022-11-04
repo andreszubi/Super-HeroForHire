@@ -4,7 +4,7 @@
 
     <label>Email: <input type="email" name="email" placeholder="Email" required /> </label>
 
-    <label>Password: <input type="text" name="password" placeholder="Password" required /> </label>
+    <label>Password: <input type="password" name="password" placeholder="Password" required /> </label>
 
     <label>Postalcode: <input type="text" name="postalcode" placeholder="Postalcode" required /> </label>
 
@@ -25,3 +25,9 @@
     </select>
     <button type="submit">Signup</button>
 </form>
+
+<% if (typeof errorMessage !=="undefined" ) { %>
+    <p>
+        <%= errorMessage %>
+    </p>
+    <% } %>
