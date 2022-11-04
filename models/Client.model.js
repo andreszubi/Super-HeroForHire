@@ -30,6 +30,6 @@ const clientSchema = new Schema(
   }
 );
 
-const Client = model("User", clientSchema);
+const Client = model("Client", clientSchema);
 
 module.exports = Client;

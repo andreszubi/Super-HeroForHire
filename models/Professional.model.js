@@ -30,6 +30,10 @@ const proSchema = new Schema(
         type: String,
         required: true
     },
+    price: {
+        type: String,
+        required: true
+    },
     specialties: {
         type: String,
         required: true
@@ -38,6 +42,6 @@ const proSchema = new Schema(
   }
 );
 
-const Professional = model("User", proSchema);
+const Professional = model("Professional", proSchema);
 
 module.exports = Professional;
