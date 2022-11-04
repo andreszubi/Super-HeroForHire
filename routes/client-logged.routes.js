@@ -52,6 +52,12 @@ router.post('/client-signup', async (req, res, next) => {
         }
     } 
 });
+
+router.get('/client-profile', (req, res, next) => {
+    res.render('auth/client-profile');
+});
+
+
  
 
 
