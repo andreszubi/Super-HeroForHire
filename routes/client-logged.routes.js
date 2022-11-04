@@ -14,7 +14,7 @@ router.get('/client-signup', (req, res, next) => {
 });
 
 router.post('/client-signup', async (req, res, next) => {
-    const {email, password, name, address,phone, services} = req.body;
+    const {email, password, name, address,phone} = req.body;
     if (email === '' || password === '') {
         res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
