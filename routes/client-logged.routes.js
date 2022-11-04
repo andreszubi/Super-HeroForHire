@@ -15,7 +15,7 @@ router.get('/client-signup', (req, res, next) => {
 
 router.post('/auth/client/client-signup', async (req, res, next) => {
     const {email, password, name, address,phone} = req.body;
-    if (email === '' || password === '') {
+   /* if (email === '' || password === '') {
         res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
     }
@@ -28,16 +28,16 @@ router.post('/auth/client/client-signup', async (req, res, next) => {
     if (!passwordRegex.test(password)) {
         res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
         return;
-    }
+    } */
     const salt = bcrypt.genSaltSync(saltRounds);
-    const hashedPassword = bcrypt.hashSync(password, salt);
+    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
     try {
         await Client.create({
-            email,
+            fullname: req.body.fullname,
+            email: req.body.email,
             password: hashedPassword,
-            fullname,
-            address,
-            phone,
+            postalcode: req.body.postalcode,
+            phone: req.body.phone,
         });
         res.redirect('auth/client-login');
     } catch (error) {
