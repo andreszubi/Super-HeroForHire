@@ -37,7 +37,7 @@ router.post('/client-signup', async (req, res, next) => {
             postalcode: req.body.postalcode,
             phone: req.body.phone,
         });
-        res.redirect('/auth/client/client-login');
+        res.redirect('/');
     } catch (error) {
        console.log(error.message)
        res.render('auth/client-signup', { errorMessage: 'Something went wrong. Please try again.' });
