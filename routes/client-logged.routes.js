@@ -1,16 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Client = require('../models/Client.model');
-const bcrypt = require('bcryptjs');
-const app = require('../app');
-
+const Client = require("../models/Client.model");
+const bcrypt = require("bcryptjs");
+const app = require("../app");
 
 const saltRounds = 10;
 
 // GET route for displaying the signup form
 
-router.get('/client-signup', (req, res, next) => {
-    res.render('auth/client-signup');
+router.get("/client-signup", (req, res, next) => {
+  res.render("auth/client-signup");
 });
 
 router.post('/auth/client/client-signup', async (req, res, next) => {
@@ -63,15 +62,6 @@ router.post('/client-login', async (req, res, next) => {
         res.redirect('/client-profile');
     }
 });
-
-// GET route for displaying the client profile page
-router.get('/client-profile', (req, res, next) => {
-    res.render('client/client-profile', { userInSession: req.session.currentUser });
-});
-
-
-
-
  
 
 
