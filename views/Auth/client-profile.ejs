@@ -1,21 +1,32 @@
-<h1>Welcome <%client.name %>!</h1>
+<nav>
+  <a href="">Edit Profile</a>
+  <a href="">Delete Profile</a>
+  <form action="/logout" method="get"><button type="submit">Log out</button></form>
+</nav>
+
+<h1>Welcome!</h1>
 
 <h2>What are you searching for today?</h2>
+<div>
+<form action="">
+        House Cleaning
+         Hairstylist
+         Massage Therapy
+         Babysitter
+         Personal Trainer
+         Landscaping
+         Dogsitter
 
-<!-- Display choices of services that clients are looking for-->
-<% for (var i = 0; i < services.length; i++) { %>
-  <div class="service">
-    <h3><%= services[i].name %></h3>
-    <p><%= services[i].description %></p>
-    <button><a href="/services/<%= services[i].id %>">View Details</a></button>
-  </div>
+
+</form>
+</div>
+
 
 <h3>Edit profile</h3>
 <h3>Delete profile</h3>
 
 <!-- /*Upcoming bookings*/ , make responsive and that we can cancel? -->
-<h2>Requests</h2>
+<h2>Requests Status</h2>
 <button>Cancel</button>
 
 
-<a hrf=""><button>Log out</button></a>

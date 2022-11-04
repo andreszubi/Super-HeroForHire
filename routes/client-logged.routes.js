@@ -58,8 +58,19 @@ router.post('/client-login', async (req, res, next) => {
     }
     if (bcrypt.compareSync(password, currentUser.password)) {
         req.session.currentUser = currentUser;
-        res.redirect('/client-profile');
+        res.redirect('/auth/client/client-profile');
     }
+});
+
+// GET route for displaying the client profile
+router.get('/client-profile', (req, res, next) => {
+    res.render('auth/client-profile');
+});
+
+// GET route for logging out
+router.get('/logout', (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/');
 });
  
 
