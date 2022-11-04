@@ -3,11 +3,15 @@ const router = express.Router();
 const Professional = require("../models/Professional.model");
 const app = require("../app");
 const bcrypt = require("bcryptjs");
+const {
+  proIsLoggedIn,
+  proIsLoggedOut,
+} = require("../middleware/professional-route-guard.js");
 
 // GET route for displaying the signup form
 
 router.get("/pro-signup", (req, res, next) => {
-  res.render("auth/pro-signup");
+  res.render("auth/pro-signup", { isConnected: false });
 });
 
 router.post("/pro-signup", async (req, res, next) => {
@@ -27,18 +31,8 @@ router.post("/pro-signup", async (req, res, next) => {
     res.redirect("/auth/pro/pro-profile");
   } catch (error) {
     console.log(error.message);
-    res.render("auth/pro-signup");
+    res.render("auth/pro-signup", { isConnected: false });
 
-    //   const {
-    //     name,
-    //     email,
-    //     password,
-    //     postalcode,
-    //     phone,
-    //     services,
-    //     price,
-    //     specialties,
-    //   } = req.body;
     //   if (email === "" || password === "") {
     //     res.render("auth/pro-signup", {
     //       errorMessage:
@@ -94,17 +88,37 @@ router.get("/pro-profile", (req, res, next) => {
 });
 
 router.get("/pro-login", (req, res) => {
-  res.render("auth/pro-login");
+  res.render("auth/pro-login", { isConnected: false });
 });
 
 router.post("/pro-login", async (req, res) => {
-  const { name, password } = req.body;
-
-  const loggedUser = await User.findOne({ name: name });
-  const checkPassword = await bcrypt.compare(password, loggedUser.password);
-  if (checkPassword) {
-    res.redirect("auth/pro-profile");
+  const { email, password } = req.body;
+  const loggedProUser = await Professional.findOne({ email });
+  if (!loggedProUser) {
+    //No user with that name//
+    res.render("auth/pro-login", {
+      errorMessage: "No user with this username",
+      isConnected: false,
+    });
+  } else {
+    if (bcrypt.compareSync(password, loggedProUser.password)) {
+      //User with right password//
+      req.session.professional = loggedProUser;
+      res.redirect("auth/pro-profile");
+    } else {
+      //User and incorrect password//
+      res.render("auth/pro-login", {
+        errorMessage: "Incorrect password!",
+        isConnected: false,
+      });
+    }
   }
+
+  //   const loggedUser = await User.findOne({ name: name });
+  //   const checkPassword = await bcrypt.compare(password, loggedUser.password);
+  //   if (checkPassword) {
+
+  //   }
 });
 
 module.exports = router;
