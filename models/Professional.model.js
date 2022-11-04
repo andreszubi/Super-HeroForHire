@@ -33,10 +33,6 @@ const proSchema = new Schema({
     type: String,
     required: true,
   },
-  specialties: {
-    type: String,
-    required: true,
-  },
 });
 
 const Professional = model("Professional", proSchema);
