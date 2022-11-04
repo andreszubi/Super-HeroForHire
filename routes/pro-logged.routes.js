@@ -24,7 +24,7 @@ router.post("/pro-signup", async (req, res, next) => {
       services: req.body.services,
       price: req.body.price,
     });
-    res.redirect("auth/pro-profile");
+    res.redirect("/auth/pro/pro-profile");
   } catch (error) {
     console.log(error.message);
     res.render("auth/pro-signup");
@@ -87,6 +87,10 @@ router.post("/pro-signup", async (req, res, next) => {
     //   next(error);
     // }
   }
+});
+
+router.get("/pro-profile", (req, res, next) => {
+  res.render("auth/pro-profile");
 });
 
 router.get("/pro-login", (req, res) => {
