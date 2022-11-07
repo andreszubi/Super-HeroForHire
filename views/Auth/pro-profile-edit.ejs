@@ -1,25 +1,26 @@
-<form method="POST" action="/characters/<%=Professional.id%>/update">
-    <label>Full Name:<input required type="text" name="name" placeholder="Full Name"
-            value="<%= Professional.fullname%>" /></label>
-    <label>Email:<input required type="email" name="email" placeholder="Email"
-            value="<%= Professional.occupation%>" /></label>
-    <label>Postalcode: <input required type="text" name="Postalcode" placeholder="Postalcode"
-            value="<%= Professional.weapon%>" /></label>
-    <label>Phone Number: <input required type="text" name="phone" placeholder="Phone Number"
-            value="<%= Professional.phone%>" /></label>
-    <label>Price: <input required type="text" name="price" placeholder="Price"
-            value="<%= Professional.price%>" /></label>
-    <label for="services">Service Offered:</label>
-    <select name="services" id="services" required>
-        <option value="null">Choose a service</option>
-        <option value="House Cleaning"> House Cleaning</option>
-        <option value="Hairstylist"> Hairstylist</option>
-        <option value="Massage Therapy"> Massage Therapy</option>
-        <option value="Babysitter">Babysitter</option>
-        <option value="Personal Trainer">Personal Trainer</option>
-        <option value="Landscaping">Landscaping</option>
-        <option value="Dogsitter">Dogsitter</option>
-    </select>
+<h1 class="title">Edit your Profile</h1>
 
-    <button type="submit">Update</button>
+<form method="POST" action="/auth/pro/pro-profile-edit/<%=professional.id%>?_method=PUT">
+        <label>Full Name:<input required type="text" name="fullname" placeholder="Full Name"
+                        value="<%= professional.fullname%>" /></label>
+        <label>Email:<input required type="email" name="email" placeholder="Email"
+                        value="<%= professional.email%>" /></label>
+        <label>Postalcode: <input required type="text" name="Postalcode" placeholder="Postalcode"
+                        value="<%= professional.postalcode%>" /></label>
+        <label>Phone Number: <input required type="text" name="phone" placeholder="Phone Number"
+                        value="<%= professional.phone%>" /></label>
+        <label>Price: <input required type="text" name="price" placeholder="Price"
+                        value="<%= professional.price%>" /></label>
+        <label for="services">Service Offered:</label>
+        <select name="services" id="services" required>
+                <option value="null">Choose a service</option>
+                <option value="House Cleaning"> House Cleaning</option>
+                <option value="Hairstylist"> Hairstylist</option>
+                <option value="Massage Therapy"> Massage Therapy</option>
+                <option value="Babysitter">Babysitter</option>
+                <option value="Personal Trainer">Personal Trainer</option>
+                <option value="Landscaping">Landscaping</option>
+                <option value="Dogsitter">Dogsitter</option>
+        </select>
+        <button>Update</button>
 </form>

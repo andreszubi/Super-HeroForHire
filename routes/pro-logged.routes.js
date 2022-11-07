@@ -11,7 +11,7 @@ const {
 // GET route for displaying the signup form
 
 router.get("/pro-signup", (req, res, next) => {
-  res.render("auth/pro-signup", { isConnected: false });
+  res.render("auth/pro-signup");
 });
 
 router.post("/pro-signup", async (req, res, next) => {
@@ -19,7 +19,7 @@ router.post("/pro-signup", async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-    await Professional.create({
+    const proProfile = await Professional.create({
       fullname: req.body.fullname,
       email: req.body.email,
       password: hashedPassword,
@@ -28,10 +28,10 @@ router.post("/pro-signup", async (req, res, next) => {
       services: req.body.services,
       price: req.body.price,
     });
-    res.redirect("/auth/pro/pro-profile");
+    res.redirect(`/auth/pro/pro-login`);
   } catch (error) {
     console.log(error.message);
-    res.render("auth/pro-signup", { isConnected: false });
+    res.render("auth/pro-signup");
 
     //   if (email === "" || password === "") {
     //     res.render("auth/pro-signup", {
@@ -83,12 +83,8 @@ router.post("/pro-signup", async (req, res, next) => {
   }
 });
 
-router.get("/pro-profile", (req, res, next) => {
-  res.render("auth/pro-profile");
-});
-
 router.get("/pro-login", (req, res) => {
-  res.render("auth/pro-login", { isConnected: false });
+  res.render("auth/pro-login");
 });
 
 router.post("/pro-login", async (req, res) => {
@@ -98,18 +94,16 @@ router.post("/pro-login", async (req, res) => {
     //No user with that name//
     res.render("auth/pro-login", {
       errorMessage: "No user with this username",
-      isConnected: false,
     });
   } else {
     if (bcrypt.compareSync(password, loggedProUser.password)) {
       //User with right password//
       req.session.professional = loggedProUser;
-      res.redirect("/auth/pro/pro-profile");
+      res.redirect(`/auth/pro/pro-profile/${loggedProUser._id}`);
     } else {
       //User and incorrect password//
       res.render("auth/pro-login", {
         errorMessage: "Incorrect password!",
-        isConnected: false,
       });
     }
   }
@@ -121,12 +115,38 @@ router.post("/pro-login", async (req, res) => {
   //   }
 });
 
-router.get("/logout", (req, res, next) => {
+router.get("/pro-profile/:id", proIsLoggedIn, async (req, res, next) => {
+  console.log("req", req.params.id);
+
+  const professional = await Professional.findById(req.params.id);
+  console.log(professional);
+  res.render("auth/pro-profile", { professional });
+});
+
+router.get("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
+  const professional = await Professional.findById(req.params.id);
+  res.render("auth/pro-profile-edit", { professional });
+});
+
+router.put("/pro-profile-edit/:id", async (req, res, next) => {
+  const response = await Professional.findById(req.params.id);
+  response.fullname = req.body.fullname;
+  await response.save();
+  console.log(req.body.fullname);
+  res.send("hello");
+});
+
+router.delete("/pro-profile/delete/:id", async (req, res, next) => {
+  await Professional.findByIdAndDelete(req.params.id);
+  res.redirect("/");
+});
+
+router.get("/logout", proIsLoggedOut, (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       next(err);
     }
-    res.redirect("/home");
+    res.redirect("/");
   });
 });
 

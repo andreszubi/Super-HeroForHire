@@ -1,14 +1,17 @@
 const proIsLoggedIn = (req, res, next) => {
   if (!req.session.professional) {
-    return res.redirect("/login");
+    res.redirect("/");
+  } else {
+    next();
   }
-  next();
 };
+
 const proIsLoggedOut = (req, res, next) => {
   if (req.session.professional) {
     return res.redirect("/");
+  } else {
+    next();
   }
-  next();
 };
 
 module.exports = {

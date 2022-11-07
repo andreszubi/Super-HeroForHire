@@ -1,19 +1,24 @@
-<h2>Professional Signup</h2>
-<form action="/auth/pro/pro-signup" method="post">
-    <label>Full Name: <input type="text" name="fullname" placeholder="Full Name" required /> </label>
+<h1 class="title">Professional Signup</h1>
+<form class="proForm" action="/auth/pro/pro-signup" method="post">
+    <label class="proFormItem">Full Name: <input type="text" name="fullname" placeholder="Full Name" required />
+    </label>
 
-    <label>Email: <input type="email" name="email" placeholder="Email" required /> </label>
+    <label class="proFormItem">Email: <input type="email" name="email" placeholder="Email" required /> </label>
 
-    <label>Password: <input type="password" name="password" placeholder="Password" required /> </label>
+    <label class="proFormItem">Password: <input type="password" name="password" placeholder="Password" required />
+    </label>
 
-    <label>Postalcode: <input type="text" name="postalcode" placeholder="Postalcode" required /> </label>
+    <label class="proFormItem">Postalcode: <input type="text" name="postalcode" placeholder="Postalcode" required />
+    </label>
 
-    <label>Phone Number: <input type="text" name="phone" placeholder="Phone Number" required /> </label>
+    <label class="proFormItem">Phone Number: <input type="text" name="phone" placeholder="Phone Number" required />
+    </label>
 
-    <label>Price per hour: <input type="text" name="price" placeholder="Hourly Rate for service" required /></label>
+    <label class="proFormItem">Price per hour: <input type="text" name="price" placeholder="Hourly Rate for service"
+            required /></label>
 
-    <label>Service Offered: </label>
-    <select name="services" id="services">
+    <label class="proFormItem">Service Offered: </label>
+    <select class="proFormList" name="services" id="services">
         <option value="null">Choose a service</option>
         <option value="House Cleaning"> House Cleaning</option>
         <option value="Hairstylist"> Hairstylist</option>
