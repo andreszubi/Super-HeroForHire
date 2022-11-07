@@ -4,9 +4,9 @@ const Client = require("../models/Client.model");
 const bcrypt = require("bcryptjs");
 const app = require("../app");
 const {
-  proIsLoggedIn,
-  proIsLoggedOut,
-} = require("../middleware/professional-route-guard.js");
+  clientIsLoggedIn,
+  clientIsLoggedOut,
+} = require("../middleware/client-route-guard.js");
 
 // GET route for displaying the signup form
 
@@ -67,7 +67,7 @@ router.post("/client-login", async (req, res, next) => {
   } else {
     if (bcrypt.compareSync(password, loggedClientUser.password)) {
       req.session.client = loggedClientUser;
-      res.redirect(`/auth/client/client-profile/${loggedClientUser._id}`);
+      res.redirect(`/auth/client/client-search/${loggedClientUser._id}`);
     } else {
       res.render("auth/client-login", {
         errorMessage: "Incorrect password!",
@@ -76,8 +76,15 @@ router.post("/client-login", async (req, res, next) => {
   }
 });
 
+// GET route for SEARCH
+router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
+  const client = await Client.findById(req.params.id);
+  console.log(client);
+  res.render("auth/client-search", { client });
+});
+
 // GET route for displaying the client profile
-router.get("/client-profile/:id", proIsLoggedIn, async (req, res, next) => {
+router.get("/client-profile/:id", clientIsLoggedIn, async (req, res, next) => {
   const client = await Client.findById(req.params.id);
   res.render("auth/client-profile", { client });
 });
@@ -85,33 +92,33 @@ router.get("/client-profile/:id", proIsLoggedIn, async (req, res, next) => {
 //Edit client profile
 router.get(
   "/client-profile-edit/:id",
-  proIsLoggedIn,
+  clientIsLoggedIn,
   async (req, res, next) => {
     const client = await Client.findById(req.params.id);
     res.render("auth/client-profile-edit", { client });
   }
 );
 
-router.put("/client-profile-edit/:id", async (req, res, next) => {
-  const client = await Client.findById(req.params.id);
-  const { fullname, email, postalcode, phone } = req.body;
-  client.fullname = fullname;
-  client.email = email;
-  client.postalcode = postalcode;
-  client.phone = phone;
-  await client.save();
-  res.redirect(`/auth/client/client-profile/${client._id}`);
-});
-
-//DELETE user
-router.delete(
-  "/client-profile/delete/:id",
-  proIsLoggedIn,
+router.put(
+  "/client-profile-edit/:id",
+  clientIsLoggedIn,
   async (req, res, next) => {
-    await Client.findByIdAndDelete(req.params.id);
-    res.redirect("/");
+    const client = await Client.findById(req.params.id);
+    const { fullname, email, postalcode, phone } = req.body;
+    client.fullname = fullname;
+    client.email = email;
+    client.postalcode = postalcode;
+    client.phone = phone;
+    await client.save();
+    res.redirect(`/auth/client/client-profile/${client._id}`);
   }
 );
+
+//DELETE user
+router.delete("/client-profile/delete/:id", async (req, res, next) => {
+  await Client.findByIdAndDelete(req.params.id);
+  res.redirect("/");
+});
 
 // GET route for logging out
 router.get("/logout", (req, res, next) => {

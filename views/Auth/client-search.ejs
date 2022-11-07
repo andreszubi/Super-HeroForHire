@@ -1,18 +1,18 @@
-<a href="/auth/client/client-profile/<%=client.id%>">
-    <h1>What are you searching for today?</h1>
-    <div class="searchForm1">
-        <form action="/auth/client/client-search" method="post">
-            <label for="search-services">Servide Offered: <select name="" id="" multiple>
-                    <input list="services">
-                    <option value="1">Maid</option>
-                    <option value="2">Haitstylist</option>
-                    <option value="3">Massage Therapy</option>
-                    <option value="4">Babysitter</option>
-                    <option value="5">Personal Trainer</option>
-                    <option value="6">Landscaping</option>
-                    <option value="7">Dogsitter</option>
-                </select>
-            </label>
-            <button id="search-btn" class="form-elem" type="submit">Search</button>
-        </form>
-    </div>
+<a href="/auth/client/client-profile/<%=client._id%>"><button>Profile</button></a>
+<h1>What are you searching for today?</h1>
+<div class="searchForm1">
+    <form action="/auth/client/client-search" method="post">
+        <label class="proFormItem">Service Offered: </label>
+        <select class="proFormList" name="services" id="services">
+            <option value="null">Choose a service</option>
+            <option value="House Cleaning"> House Cleaning</option>
+            <option value="Hairstylist"> Hairstylist</option>
+            <option value="Massage Therapy"> Massage Therapy</option>
+            <option value="Babysitter">Babysitter</option>
+            <option value="Personal Trainer">Personal Trainer</option>
+            <option value="Landscaping">Landscaping</option>
+            <option value="Dogsitter">Dogsitter</option>
+        </select>
+        <button id="search-btn" class="form-elem" type="submit">Search</button>
+    </form>
+</div>

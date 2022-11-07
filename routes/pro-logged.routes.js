@@ -137,6 +137,8 @@ router.put("/pro-profile-edit/:id", async (req, res, next) => {
   res.redirect(`/auth/pro/pro-profile/${professional._id}`);
 });
 
+//DELETE profile
+
 router.delete(
   "/pro-profile/delete/:id",
   proIsLoggedIn,
