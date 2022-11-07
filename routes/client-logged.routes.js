@@ -7,6 +7,7 @@ const {
   clientIsLoggedIn,
   clientIsLoggedOut,
 } = require("../middleware/client-route-guard.js");
+const Professional = require("../models/Professional.model");
 
 // GET route for displaying the signup form
 
@@ -15,21 +16,6 @@ router.get("/client-signup", (req, res, next) => {
 });
 
 router.post("/client-signup", async (req, res, next) => {
-  /* if (email === '' || password === '') {
-        res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
-        return;
-    }
-    const emailRegex = /@/;
-    if (!emailRegex.test(email)) {
-        res.render('auth/client-signup', { errorMessage: 'Email format is not valid.' });
-        return;
-    }
-    const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-    if (!passwordRegex.test(password)) {
-        res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
-        return;
-    } */
-
   try {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
@@ -50,7 +36,23 @@ router.post("/client-signup", async (req, res, next) => {
   }
 });
 
+/* if (email === '' || password === '') {
+        res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
+        return;
+    }
+    const emailRegex = /@/;
+    if (!emailRegex.test(email)) {
+        res.render('auth/client-signup', { errorMessage: 'Email format is not valid.' });
+        return;
+    }
+    const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    if (!passwordRegex.test(password)) {
+        res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+        return;
+    } */
+
 // GET route for displaying the login form
+
 router.get("/client-login", (req, res, next) => {
   res.render("auth/client-login");
 });
@@ -79,9 +81,22 @@ router.post("/client-login", async (req, res, next) => {
 // GET route for SEARCH
 router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
   const client = await Client.findById(req.params.id);
-  console.log(client);
   res.render("auth/client-search", { client });
 });
+
+//POST route for RESULTS
+router.post("/client-search/:id", async (req, res, next) => {
+  console.log("pajaritos");
+  const professional = await Professional.find({ services: "House Cleaning" });
+  console.log(professional);
+  res.redirect("auth/client/results", { professional });
+});
+
+//GET route for BOOKING CONFIRMATION
+// router.get("/client/booking-confirmation/:id", async (req, res, next) => {
+//   const client = await Client.findById(req.params.id);
+//   res.redirect("auth/client/booking-confirmation", { client });
+// });
 
 // GET route for displaying the client profile
 router.get("/client-profile/:id", clientIsLoggedIn, async (req, res, next) => {

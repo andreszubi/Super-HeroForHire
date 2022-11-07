@@ -85,6 +85,8 @@ router.post("/pro-signup", async (req, res, next) => {
   }
 });
 
+//GET/POST route for Login
+
 router.get("/pro-login", (req, res) => {
   res.render("auth/pro-login");
 });
@@ -125,7 +127,7 @@ router.get("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   res.render("auth/pro-profile-edit", { professional });
 });
 
-router.put("/pro-profile-edit/:id", async (req, res, next) => {
+router.put("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.findById(req.params.id);
   const { fullname, email, postalcode, phone, price } = req.body;
   professional.fullname = fullname;
@@ -147,6 +149,8 @@ router.delete(
     res.redirect("/");
   }
 );
+
+//Logout
 
 router.get("/logout", proIsLoggedOut, (req, res, next) => {
   req.session.destroy((err) => {

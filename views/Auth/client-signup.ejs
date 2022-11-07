@@ -1,24 +1,20 @@
 <h1 class="title">Client Signup</h1>
 <form class="clientForm" action="/auth/client/client-signup" method="post">
-    <label label class="clientFormItem">Full Name: <input type="text" name="fullname" placeholder="Full Name"
-            required /> </label>
-
-    <label class="clientFormItem">Email: <input type="email" name="email" placeholder="Email" required /> </label>
-
-    <label class="clientFormItem">Password: <input type="password" name="password" placeholder="Password" required />
-    </label>
-
-    <label class="clientFormItem">Postal Code: <input type="text" name="postalcode" placeholder="Postal Code"
-            required /> </label>
-
-    <label class="clientFormItem">Phone Number: <input type="text" name="phone" placeholder="Phone Number"
-            required /></label>
-
-    <button type="submit">Signup</button>
+        <label label class="clientFormItem">Full Name: <input type="text" name="fullname" placeholder="Full Name"
+                        required /> </label>
+        <label class="clientFormItem">Email: <input type="email" name="email" placeholder="Email" required /> </label>
+        <label class="clientFormItem">Password: <input type="password" name="password" placeholder="Password"
+                        required />
+        </label>
+        <label class="clientFormItem">Postal Code: <input type="text" name="postalcode" placeholder="Postal Code"
+                        required /> </label>
+        <label class="clientFormItem">Phone Number: <input type="text" name="phone" placeholder="Phone Number"
+                        required /></label>
+        <button type="submit">Signup</button>
 </form>
 
 <% if (typeof errorMessage !=="undefined" ) { %>
-    <p>
-        <%= errorMessage %>
-    </p>
-    <% } %>
+        <p>
+                <%= errorMessage %>
+        </p>
+        <% } %>
