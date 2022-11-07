@@ -3,6 +3,10 @@ const router = express.Router();
 const Client = require("../models/Client.model");
 const bcrypt = require("bcryptjs");
 const app = require("../app");
+const {
+  proIsLoggedIn,
+  proIsLoggedOut,
+} = require("../middleware/professional-route-guard.js");
 
 // GET route for displaying the signup form
 
@@ -30,14 +34,14 @@ router.post("/client-signup", async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-    await Client.create({
+    const clientProfile = await Client.create({
       fullname: req.body.fullname,
       email: req.body.email,
       password: hashedPassword,
       postalcode: req.body.postalcode,
       phone: req.body.phone,
     });
-    res.redirect("/");
+    res.redirect("/auth/client/client-login");
   } catch (error) {
     console.log(error.message);
     res.render("auth/client-signup", {
@@ -47,34 +51,76 @@ router.post("/client-signup", async (req, res, next) => {
 });
 
 // GET route for displaying the login form
-router.get('/client-login', (req, res, next) => {
-  res.render('auth/client-login');
+router.get("/client-login", (req, res, next) => {
+  res.render("auth/client-login");
 });
 
-router.post('/client-login', async (req, res, next) => {
-  const {email, password} = req.body;
- const currentUser = await Client.findOne({email});
-  if (!currentUser) {
-      res.render('auth/client-login', { errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
-      return;
-  }
-  if (bcrypt.compareSync(password, currentUser.password)) {
-      req.session.currentUser = currentUser;
-      res.redirect('/auth/client/client-profile');
+router.post("/client-login", async (req, res, next) => {
+  const { email, password } = req.body;
+  const loggedClientUser = await Client.findOne({ email });
+  if (!loggedClientUser) {
+    res.render("auth/client-login", {
+      errorMessage:
+        "Email is not registered or is incorrect. Try with another email.",
+    });
+    return;
+  } else {
+    if (bcrypt.compareSync(password, loggedClientUser.password)) {
+      req.session.client = loggedClientUser;
+      res.redirect(`/auth/client/client-profile/${loggedClientUser._id}`);
+    } else {
+      res.render("auth/client-login", {
+        errorMessage: "Incorrect password!",
+      });
+    }
   }
 });
 
 // GET route for displaying the client profile
-router.get('/client-profile', (req, res, next) => {
-  res.render('auth/client-profile');
+router.get("/client-profile/:id", proIsLoggedIn, async (req, res, next) => {
+  const client = await Client.findById(req.params.id);
+  res.render("auth/client-profile", { client });
 });
+
+//Edit client profile
+router.get(
+  "/client-profile-edit/:id",
+  proIsLoggedIn,
+  async (req, res, next) => {
+    const client = await Client.findById(req.params.id);
+    res.render("auth/client-profile-edit", { client });
+  }
+);
+
+router.put("/client-profile-edit/:id", async (req, res, next) => {
+  const client = await Client.findById(req.params.id);
+  const { fullname, email, postalcode, phone } = req.body;
+  client.fullname = fullname;
+  client.email = email;
+  client.postalcode = postalcode;
+  client.phone = phone;
+  await client.save();
+  res.redirect(`/auth/client/client-profile/${client._id}`);
+});
+
+//DELETE user
+router.delete(
+  "/client-profile/delete/:id",
+  proIsLoggedIn,
+  async (req, res, next) => {
+    await Client.findByIdAndDelete(req.params.id);
+    res.redirect("/");
+  }
+);
 
 // GET route for logging out
-router.get('/logout', (req, res, next) => {
-  req.session.destroy();
-  res.redirect('/');
+router.get("/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+    }
+    res.redirect("/");
+  });
 });
-
-
 
 module.exports = router;

@@ -1,4 +1,4 @@
-<h1>Professional Profile</h1>
+<h2 class="title">Professional Profile</h2>
 
 <!-- /*Make rresponsive request*/ -->
 <h2>Requests</h2>
@@ -6,7 +6,9 @@
 <button>Deny</button>
 <!-- /*This should send a confirmation/cancellation to client*/ -->
 
-<a href="/auth/pro/pro-profile-edit/<%= professional.id %>" method="post"><button type="submit">Edit</button></a>
-<a href="/"><button type="submit">Log out</button></a>
+<a href="/auth/pro/pro-profile-edit/<%= professional._id %>/"><button type="submit">Edit</button></a>
+
 <form method="POST" action="/auth/pro/pro-profile/delete/<%=professional.id%>?_method=DELETE"><button
-        type="submit">Delete profile</button></form>
+                type="submit">Delete profile</button></form>
+
+<a href="/"><button type="submit">Log out</button></a>
