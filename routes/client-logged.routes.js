@@ -47,24 +47,34 @@ router.post("/client-signup", async (req, res, next) => {
 });
 
 // GET route for displaying the login form
-router.get("/client-login", (req, res, next) => {
-  res.render("auth/client-login");
+router.get('/client-login', (req, res, next) => {
+  res.render('auth/client-login');
 });
 
-router.post("/client-login", async (req, res, next) => {
-  const { email, password } = req.body;
-  const currentUser = await Client.findOne({ email });
+router.post('/client-login', async (req, res, next) => {
+  const {email, password} = req.body;
+ const currentUser = await Client.findOne({email});
   if (!currentUser) {
-    res.render("auth/client-login", {
-      errorMessage:
-        "Email is not registered or is incorrect. Try with another email.",
-    });
-    return;
+      res.render('auth/client-login', { errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
+      return;
   }
   if (bcrypt.compareSync(password, currentUser.password)) {
-    req.session.currentUser = currentUser;
-    res.redirect("/client-profile");
+      req.session.currentUser = currentUser;
+      res.redirect('/auth/client/client-profile');
   }
 });
+
+// GET route for displaying the client profile
+router.get('/client-profile', (req, res, next) => {
+  res.render('auth/client-profile');
+});
+
+// GET route for logging out
+router.get('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
 
 module.exports = router;
