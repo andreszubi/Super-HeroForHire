@@ -7,7 +7,7 @@ const app = require("../app");
 // GET route for displaying the signup form
 
 router.get("/client-signup", (req, res, next) => {
-  res.render("auth/client-signup");
+  res.render("auth/client-signup", { client: false });
 });
 
 router.post("/client-signup", async (req, res, next) => {
@@ -40,7 +40,7 @@ router.post("/client-signup", async (req, res, next) => {
     res.redirect("/");
   } catch (error) {
     console.log(error.message);
-    res.render("auth/client-signup", {
+    res.render("auth/client-signup", {isConnected: false}  ,{
       errorMessage: "Something went wrong. Please try again.",
     });
   }
@@ -48,14 +48,14 @@ router.post("/client-signup", async (req, res, next) => {
 
 // GET route for displaying the login form
 router.get('/client-login', (req, res, next) => {
-  res.render('auth/client-login');
+  res.render('auth/client-login', {isConnected: false});
 });
 
 router.post('/client-login', async (req, res, next) => {
   const {email, password} = req.body;
  const currentUser = await Client.findOne({email});
   if (!currentUser) {
-      res.render('auth/client-login', { errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
+      res.render('auth/client-login', {isConnected: false} ,{ errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
       return;
   }
   if (bcrypt.compareSync(password, currentUser.password)) {
@@ -70,7 +70,7 @@ router.get('/client-profile', (req, res, next) => {
 });
 
 // GET route for logging out
-router.get('/logout', (req, res, next) => {
+router.get('/', (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
 });
