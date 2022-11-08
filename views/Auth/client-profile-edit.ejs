@@ -1,9 +1,12 @@
 <h1 class="title">Edit your Profile</h1>
 
 <form method="POST" action="/auth/client/client-profile-edit/<%=client.id%>?_method=PUT">
-        <label>Full Name:<input required type="text" name="fullname" placeholder="Full Name"
-                        value="<%= client.fullname%>" /></label>
+        <label>First Name:<input required type="text" name="firstname" placeholder="First Name"
+                        value="<%= client.firstname%>" /></label>
+        <label>Last Name:<input required type="text" name="lastname" placeholder="Last Name"
+                        value="<%= client.lastname%>" /></label>
         <label>Email:<input required type="email" name="email" placeholder="Email" value="<%= client.email%>" /></label>
+        <label>City: <input required type="text" name="city" placeholder="City" value="<%= client.city%>" /></label>
         <label>Postalcode: <input required type="text" name="postalcode" placeholder="Postalcode"
                         value="<%= client.postalcode%>" /></label>
         <label>Phone Number: <input required type="text" name="phone" placeholder="Phone Number"

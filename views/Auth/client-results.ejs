@@ -5,9 +5,13 @@
 <% professional.forEach(professional=> { %>
     <a href="auth/pro/pro-profile/<%- professional.id %>">
         <h2>
-            <%= professional.fullname %>
+            <%= professional.firstname %>
+                <%=professional.lastname %>
         </h2>
     </a>
+    <h3>
+        <%= professional.city %>
+    </h3>
     <h3>
         <%= professional.postalcode %>
     </h3>

@@ -2,12 +2,15 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/*MAIN BACKGROUND*/
 .containerMain,
 .bodyProSignUpForm,
-.bodyLoginForm {
+.bodyLoginForm,
+.bodyProfile {
   background-color: #fbde59;
 }
 
+/*NAVIGATION BAR*/
 .navbar {
   background-color: white;
   display: flex;
@@ -26,73 +29,10 @@ body {
   margin-right: 500px;
 }
 
+/*BUTTONS*/
+
 .pro-button {
   margin-left: 15px;
-}
-
-.brandImg2,
-.brandImg {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.brandImg2 {
-  margin-top: 0;
-  padding-top: 50px;
-}
-
-/* .loginFormInput {
-  justify-content: center;
-} */
-
-.loginForm {
-  width: 30%;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-  padding: 2em;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.loginFormInput {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.loginForm:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 2px;
-  width: 100%;
-}
-
-.formInput {
-  width: 100%;
-  display: inline-block;
-  padding: 12px 0px;
-  margin-top: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 0;
-  border-radius: 4px;
-  color: gray;
-  font-size: 1rem;
-  box-sizing: border-box;
-  justify-content: center;
 }
 
 .pro-button,
@@ -151,6 +91,70 @@ body {
   width: 100%;
 }
 
+/*IMAGES*/
+.brandImg2,
+.brandImg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brandImg2 {
+  margin-top: 0;
+  padding-top: 50px;
+}
+
+/*LOGIN FORM*/
+.loginForm,
+.profInfo {
+  width: 30%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.loginFormInput {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginForm:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.formInput {
+  width: 100%;
+  display: inline-block;
+  padding: 12px 0px;
+  margin-top: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  border-radius: 4px;
+  color: gray;
+  font-size: 1rem;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
 .proForm {
   width: 40%;
   margin-top: 30px;
@@ -182,23 +186,44 @@ body {
   flex-direction: column;
 }
 
-/* .proForm {
-  flex: 1;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 0;
-  color: gray;
-  font-size: 1rem;
-} */
-
 .title {
   color: #0c043c;
   margin-left: auto;
   margin-right: auto;
   padding-top: 10px;
+}
+
+.profInfo {
+  width: 30%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mainProf {
+  width: 100%;
+  margin-right: 150px;
+  margin-left: auto;
+}
+.profObj {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.profBtn {
+  padding-top: 300px;
+  padding-left: 150px;
 }
 
 /* .proFormItem {

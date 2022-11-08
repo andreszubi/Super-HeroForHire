@@ -1,10 +1,14 @@
 <h1 class="title">Edit your Profile</h1>
 
 <form method="POST" action="/auth/pro/pro-profile-edit/<%=professional.id%>?_method=PUT">
-        <label>Full Name:<input required type="text" name="fullname" placeholder="Full Name"
-                        value="<%= professional.fullname%>" /></label>
+        <label>First Name:<input required type="text" name="firstname" placeholder="First Name"
+                        value="<%= professional.firstname%>" /></label>
+        <label>Last Name:<input required type="text" name="lastname" placeholder="Last Name"
+                        value="<%= professional.lastname%>" /></label>
         <label>Email:<input required type="email" name="email" placeholder="Email"
                         value="<%= professional.email%>" /></label>
+        <label>City:<input required type="text" name="city" placeholder="city"
+                        value="<%= professional.city%>" /></label>
         <label>Postalcode: <input required type="text" name="postalcode" placeholder="Postalcode"
                         value="<%= professional.postalcode%>" /></label>
         <label>Phone Number: <input required type="text" name="phone" placeholder="Phone Number"
@@ -14,13 +18,13 @@
         <label for="services">Service Offered:</label>
         <select name="services" id="services" required>
                 <option value="null">Choose a service</option>
-                <option value="House Cleaning"> House Cleaning</option>
-                <option value="Hairstylist"> Hairstylist</option>
-                <option value="Massage Therapy"> Massage Therapy</option>
                 <option value="Babysitter">Babysitter</option>
-                <option value="Personal Trainer">Personal Trainer</option>
-                <option value="Landscaping">Landscaping</option>
                 <option value="Dogsitter">Dogsitter</option>
+                <option value="Hairstylist"> Hairstylist</option>
+                <option value="House Cleaning"> House Cleaning</option>
+                <option value="Landscaping">Landscaping</option>
+                <option value="Massage Therapy"> Massage Therapy</option>
+                <option value="Personal Trainer">Personal Trainer</option>
         </select>
         <button>Update</button>
 </form>

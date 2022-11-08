@@ -20,9 +20,11 @@ router.post("/pro-signup", async (req, res, next) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
     const proProfile = await Professional.create({
-      fullname: req.body.fullname,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
       password: hashedPassword,
+      city: req.body.city,
       postalcode: req.body.postalcode,
       phone: req.body.phone,
       services: req.body.services,
@@ -129,9 +131,12 @@ router.get("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
 
 router.put("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.findById(req.params.id);
-  const { fullname, email, postalcode, phone, price } = req.body;
-  professional.fullname = fullname;
+  const { firstname, lastname, email, city, postalcode, phone, price } =
+    req.body;
+  professional.firstname = firstname;
+  professional.lastname = firstname;
   professional.email = email;
+  professional.city = city;
   professional.postalcode = postalcode;
   professional.phone = phone;
   professional.price = price;

@@ -21,9 +21,10 @@ router.post("/client-signup", async (req, res, next) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
     const clientProfile = await Client.create({
-      fullname: req.body.fullname,
-      email: req.body.email,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       password: hashedPassword,
+      city: req.body.city,
       postalcode: req.body.postalcode,
       phone: req.body.phone,
     });
@@ -122,9 +123,11 @@ router.put(
   clientIsLoggedIn,
   async (req, res, next) => {
     const client = await Client.findById(req.params.id);
-    const { fullname, email, postalcode, phone } = req.body;
-    client.fullname = fullname;
+    const { firstname, lastname, email, city, postalcode, phone } = req.body;
+    client.firstname = firstname;
+    client.lastname = lastname;
     client.email = email;
+    client.city = city;
     client.postalcode = postalcode;
     client.phone = phone;
     await client.save();

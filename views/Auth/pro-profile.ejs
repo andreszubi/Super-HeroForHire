@@ -3,16 +3,7 @@
                 <h1 class="brandName">SuperheroForHire</h1>
                 <a href="/auth/pro/logout"><button class="pro-button" type="submit">Log out</button></a>
         </nav>
-        <div class="mainProf">
-                <div class="profInfo">
-                        <h2 class="title">Professional Profile</h2>
-                        <h3><label>Full Name: <%= professional.fullname%></label> </h3>
-                        <h3><label>Email: <%= professional.email%></label> </h3>
-                        <h3><label>Postal code: <%= professional.postalcode%></label> </h3>
-                        <h3><label>Phone: <%= professional.phone%></label> </h3>
-                        <h3><label>Price: <%= professional.price%></label> </h3>
-                        <h3><label>Service: <%= professional.services%></label> </h3>
-                </div>
+        <div class="profObj">
                 <div class="profBtn">
                         <a href="/auth/pro/pro-profile-edit/<%= professional._id %>/"><button class="pro-button"
                                         type="submit">Edit
@@ -20,10 +11,30 @@
                         <br>
                         <br>
                         <form method="POST" action="/auth/pro/pro-profile/delete/<%=professional.id%>?_method=DELETE">
-                                <button class="deleteBtn pro-button" type="submit">Delete profile</button></form>
+                                <button class="deleteBtn pro-button" type="submit">Delete profile</button>
+                        </form>
+                </div>
+                <div class="mainProf">
+                        <div class="profInfo">
+                                <h1 class="title">Superhero Profile</h1>
+                                <h3><label>First Name: <%= professional.firstname%></label> </h3>
+                                <h3><label>Last Name: <%= professional.lastname%></label> </h3>
+                                <h3><label>Email: <%= professional.email%></label> </h3>
+                                <h3><label>City: <%= professional.city%></label> </h3>
+                                <h3><label>Postal code: <%= professional.postalcode%></label> </h3>
+                                <h3><label>Phone: <%= professional.phone%></label> </h3>
+                                <h3><label>Price: <%= professional.price%></label> </h3>
+                                <h3><label>Service: <%= professional.services%></label> </h3>
+                        </div>
                 </div>
         </div>
+
 </div>
+
+
+
+
+
 <!-- /*Make rresponsive request*/ -->
 <!-- <h2>Requests</h2>
 <button>Accept</button>
