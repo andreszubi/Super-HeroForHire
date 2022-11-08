@@ -3,7 +3,8 @@ body {
 }
 
 .containerMain,
-.bodyProSignUpForm {
+.bodyProSignUpForm,
+.bodyLoginForm {
   background-color: #fbde59;
 }
 

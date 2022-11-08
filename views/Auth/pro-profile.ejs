@@ -1,14 +1,31 @@
-<h2 class="title">Professional Profile</h2>
-
+<div class="bodyProfile">
+        <nav class="navbar">
+                <h1 class="brandName">SuperheroForHire</h1>
+                <a href="/auth/pro/logout"><button class="pro-button" type="submit">Log out</button></a>
+        </nav>
+        <div class="mainProf">
+                <div class="profInfo">
+                        <h2 class="title">Professional Profile</h2>
+                        <h3><label>Full Name: <%= professional.fullname%></label> </h3>
+                        <h3><label>Email: <%= professional.email%></label> </h3>
+                        <h3><label>Postal code: <%= professional.postalcode%></label> </h3>
+                        <h3><label>Phone: <%= professional.phone%></label> </h3>
+                        <h3><label>Price: <%= professional.price%></label> </h3>
+                        <h3><label>Service: <%= professional.services%></label> </h3>
+                </div>
+                <div class="profBtn">
+                        <a href="/auth/pro/pro-profile-edit/<%= professional._id %>/"><button class="pro-button"
+                                        type="submit">Edit
+                                        profile</button></a>
+                        <br>
+                        <br>
+                        <form method="POST" action="/auth/pro/pro-profile/delete/<%=professional.id%>?_method=DELETE">
+                                <button class="deleteBtn pro-button" type="submit">Delete profile</button></form>
+                </div>
+        </div>
+</div>
 <!-- /*Make rresponsive request*/ -->
-<h2>Requests</h2>
+<!-- <h2>Requests</h2>
 <button>Accept</button>
-<button>Deny</button>
+<button>Deny</button> -->
 <!-- /*This should send a confirmation/cancellation to client*/ -->
-
-<a href="/auth/pro/pro-profile-edit/<%= professional._id %>/"><button type="submit">Edit</button></a>
-
-<form method="POST" action="/auth/pro/pro-profile/delete/<%=professional.id%>?_method=DELETE"><button
-        type="submit">Delete profile</button></form>
-
-<a href="/auth/pro/logout"><button type="submit">Log out</button></a>
