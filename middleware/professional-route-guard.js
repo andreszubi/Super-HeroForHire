@@ -1,6 +1,6 @@
 const proIsLoggedIn = (req, res, next) => {
   if (!req.session.professional) {
-    res.redirect("/");
+    res.redirect("/auth/pro/pro-login");
   } else {
     next();
   }

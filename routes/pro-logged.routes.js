@@ -152,7 +152,9 @@ router.delete(
 
 //Logout
 
-router.get("/logout", proIsLoggedOut, (req, res, next) => {
+router.get("/logout", (req, res, next) => {
+  req.session.professional = null;
+  console.log("logout", req.session);
   req.session.destroy((err) => {
     if (err) {
       next(err);

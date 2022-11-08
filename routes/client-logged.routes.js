@@ -80,23 +80,22 @@ router.post("/client-login", async (req, res, next) => {
 
 // GET route for SEARCH
 router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
-  const client = await Client.findById(req.params.id);
+  const client = req.session.client;
   res.render("auth/client-search", { client });
 });
 
-//POST route for RESULTS
-router.post("/client-search/:id", async (req, res, next) => {
-  console.log("pajaritos");
+// POST route for RESULTS
+router.post("/client-search", clientIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.find({ services: "House Cleaning" });
   console.log(professional);
-  res.redirect("auth/client/results", { professional });
+  res.render("auth/client-results", { professional });
 });
 
-//GET route for BOOKING CONFIRMATION
-// router.get("/client/booking-confirmation/:id", async (req, res, next) => {
-//   const client = await Client.findById(req.params.id);
-//   res.redirect("auth/client/booking-confirmation", { client });
-// });
+// GET route for BOOKING CONFIRMATION
+router.get("/booking-confirmation", async (req, res, next) => {
+  const client = req.session.client;
+  res.render("auth/booking-confirmation", { client });
+});
 
 // GET route for displaying the client profile
 router.get("/client-profile/:id", clientIsLoggedIn, async (req, res, next) => {
@@ -137,6 +136,7 @@ router.delete("/client-profile/delete/:id", async (req, res, next) => {
 
 // GET route for logging out
 router.get("/logout", (req, res, next) => {
+  req.session.client = null;
   req.session.destroy((err) => {
     if (err) {
       next(err);
