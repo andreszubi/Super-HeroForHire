@@ -2,7 +2,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.containerMain {
+.containerMain,
+.bodyProSignUpForm {
   background-color: #fbde59;
 }
 
@@ -25,6 +26,77 @@ body {
 }
 
 .pro-button {
+  margin-left: 15px;
+}
+
+.brandImg2,
+.brandImg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brandImg2 {
+  margin-top: 0;
+  padding-top: 50px;
+}
+
+/* .loginFormInput {
+  justify-content: center;
+} */
+
+.loginForm {
+  width: 30%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.loginFormInput {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginForm:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.formInput {
+  width: 100%;
+  display: inline-block;
+  padding: 12px 0px;
+  margin-top: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  border-radius: 4px;
+  color: gray;
+  font-size: 1rem;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.pro-button,
+.client-signup,
+.client-loginBtn {
   padding: 0.75rem 1.25rem;
   border-radius: 10rem;
   color: #0c043c;
@@ -36,9 +108,11 @@ body {
   overflow: hidden;
   z-index: 1;
   border: none;
-  margin-left: 15px;
 }
-.pro-button:after {
+
+.pro-button:after,
+.client-signup:after,
+.client-loginBtn:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -49,7 +123,10 @@ body {
   border-radius: 10rem;
   z-index: -2;
 }
-.pro-button:before {
+
+.pro-button:before,
+.client-signup:before,
+.client-loginBtn:before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -61,56 +138,66 @@ body {
   border-radius: 10rem;
   z-index: -1;
 }
-.pro-button:hover {
+.pro-button:hover,
+.client-signup:hover,
+.client-loginBtn:hover {
   color: #0c043c;
 }
-.pro-button:hover:before {
+
+.pro-button:hover:before,
+.client-signup:hover:before,
+.client-loginBtn:hover:before {
   width: 100%;
 }
 
-.brandImg {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.loginForm {
-  width: 20%;
+.proForm {
+  width: 40%;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
   padding: 2em;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.loginForm:before {
+.proForm:before {
   content: "";
   position: absolute;
-  /* top: -2px; */
   left: 0;
   height: 2px;
   width: 100%;
 }
 
-.formInput {
+.proFormInput {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* .proForm {
   flex: 1;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
   border: 0;
   color: gray;
   font-size: 1rem;
-}
+} */
 
-.formInput:focus {
-  outline: none;
-  transition: transform 0.15s ease;
-  transform: scale(1.1);
+.title {
+  color: #0c043c;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
 }
 
 /* .proFormItem {

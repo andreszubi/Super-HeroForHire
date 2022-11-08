@@ -1,35 +1,39 @@
-<h1 class="title">Professional Signup</h1>
-<form class="proForm" action="/auth/pro/pro-signup" method="post">
-    <label class="proFormItem">Full Name: <input type="text" name="fullname" placeholder="Full Name" required />
-    </label>
-
-    <label class="proFormItem">Email: <input type="email" name="email" placeholder="Email" required /> </label>
-
-    <label class="proFormItem">Password: <input type="password" name="password" placeholder="Password" required />
-    </label>
-
-    <label class="proFormItem">Postalcode: <input type="text" name="postalcode" placeholder="Postalcode" required />
-    </label>
-
-    <label class="proFormItem">Phone Number: <input type="text" name="phone" placeholder="Phone Number" required />
-    </label>
-
-    <label class="proFormItem">Price per hour: <input type="text" name="price" placeholder="Hourly Rate for service"
-            required /></label>
-
-    <label class="proFormItem">Service Offered: </label>
-    <select class="proFormList" name="services" id="services">
-        <option value="null">Choose a service</option>
-        <option value="House Cleaning"> House Cleaning</option>
-        <option value="Hairstylist"> Hairstylist</option>
-        <option value="Massage Therapy"> Massage Therapy</option>
-        <option value="Babysitter">Babysitter</option>
-        <option value="Personal Trainer">Personal Trainer</option>
-        <option value="Landscaping">Landscaping</option>
-        <option value="Dogsitter">Dogsitter</option>
-    </select>
-    <button type="submit">Signup</button>
-</form>
+<div class="bodyProSignUpForm">
+    <div class="brandImg2">
+        <img src="/images/logo.png">
+    </div>
+    <div class="proForm">
+        <h1 class="title">Superhero Signup</h1>
+        <form class="proFormInput" action="/auth/pro/pro-signup" method="post">
+            <label class="formInput">Full Name:</label>
+            <input type="text" name="fullname" required />
+            <label class="formInput">Email:</label>
+            <input type="email" name="email" required />
+            <label class="formInput">Password: </label>
+            <input type="password" name="password" required />
+            <label class="formInput">Postalcode: </label>
+            <input type="text" name="postalcode" required />
+            <label class="formInput">Phone Number: </label>
+            <input type="text" name="phone" required />
+            <label class="formInput">Price per hour: </label>
+            <input type="text" name="price" placeholder="Hourly rate" required />
+            <label class="formInput">Service Offered: </label>
+            <select class="proFormList" name="services" id="services">
+                <option class="proFormListOpt" value="null">Choose a service</option>
+                <option class="proFormListOpt" value="Babysitter">Babysitter</option>
+                <option class="proFormListOpt" value="Dogsitter">Dogsitter</option>
+                <option class="proFormListOpt" value="Hairstylist"> Hairstylist</option>
+                <option class="proFormListOpt" value="House Cleaning"> House Cleaning</option>
+                <option class="proFormListOpt" value="Landscaping">Landscaping</option>
+                <option class="proFormListOpt" value="Massage Therapy"> Massage Therapy</option>
+                <option class="proFormListOpt" value="Personal Trainer">Personal Trainer</option>
+            </select>
+            <br>
+            <br>
+            <button class="pro-button" type="submit">Signup</button>
+        </form>
+    </div>
+</div>
 
 <% if (typeof errorMessage !=='undefined' ) { %>
     <p style="color: red">

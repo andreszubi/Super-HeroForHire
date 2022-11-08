@@ -1,9 +1,16 @@
-<h1 class="title">Professional Login Page</h1>
-<form action="/auth/pro/pro-login" method="post">
-    <label>Email: <input type="email" name="email" placeholder="Email" /> </label>
-    <label>Password: <input type="password" name="password" placeholder="Password" /> </label>
-    <button type="submit">Login</button>
-</form>
+<div class="bodyLoginForm">
+    <div class="brandImg2">
+        <img src="/images/logo.png">
+    </div>
+    <div class="loginForm">
+        <h1 class="title">Superhero Login</h1>
+        <form class="loginFormInput" action="/auth/pro/pro-login" method="POST">
+            <input class="formInput" type="email" name="email" placeholder="Email" />
+            <input class="formInput" type="password" name="password" placeholder="Password" />
+            <button class="pro-button" type="submit">Login</button>
+        </form>
+    </div>
+</div>
 
 <% if (typeof errorMessage !=='undefined' ) { %>
     <p style="color: red">

@@ -86,13 +86,16 @@ router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
 
 // POST route for RESULTS
 router.post("/client-search", clientIsLoggedIn, async (req, res, next) => {
-  const professional = await Professional.find({ services: "House Cleaning" });
+  const professional = await Professional.find({ services: req.body.services });
   console.log(professional);
   res.render("auth/client-results", { professional });
 });
 
 // GET route for BOOKING CONFIRMATION
-router.get("/booking-confirmation", clientIsLoggedIn, async (req, res, next) => {
+router.get(
+  "/booking-confirmation",
+  clientIsLoggedIn,
+  async (req, res, next) => {
     const client = req.session.client;
     res.render("auth/booking-confirmation", { client });
   }
@@ -105,21 +108,27 @@ router.get("/client-profile/:id", clientIsLoggedIn, async (req, res, next) => {
 });
 
 //Edit client profile
-router.get("/client-profile-edit/:id", clientIsLoggedIn, async (req, res, next) => {
-  const client = await Client.findById(req.params.id);
-  res.render("auth/client-profile-edit", { client });
+router.get(
+  "/client-profile-edit/:id",
+  clientIsLoggedIn,
+  async (req, res, next) => {
+    const client = await Client.findById(req.params.id);
+    res.render("auth/client-profile-edit", { client });
   }
 );
 
-router.put("/client-profile-edit/:id", clientIsLoggedIn, async (req, res, next) => {
-  const client = await Client.findById(req.params.id);
-  const { fullname, email, postalcode, phone } = req.body;
-  client.fullname = fullname;
-  client.email = email;
-  client.postalcode = postalcode;
-  client.phone = phone;
-  await client.save();
-  res.redirect(`/auth/client/client-profile/${client._id}`);
+router.put(
+  "/client-profile-edit/:id",
+  clientIsLoggedIn,
+  async (req, res, next) => {
+    const client = await Client.findById(req.params.id);
+    const { fullname, email, postalcode, phone } = req.body;
+    client.fullname = fullname;
+    client.email = email;
+    client.postalcode = postalcode;
+    client.phone = phone;
+    await client.save();
+    res.redirect(`/auth/client/client-profile/${client._id}`);
   }
 );
 
