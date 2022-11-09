@@ -6,15 +6,16 @@ body {
 .containerMain,
 .bodyProSignUpForm,
 .bodyLoginForm,
-.bodyProfile {
+.bodyProfile,
+.client-search-page {
   background-color: #fbde59;
 }
 
 /*NAVIGATION BAR*/
 .navbar {
-  background-color: white;
+  background-color: #0c043c;
+  color: white;
   display: flex;
-  width: 100vw;
   align-content: flex-end;
   /* justify-content: space-between; */
   align-items: center;
@@ -22,14 +23,19 @@ body {
 
 .brandName {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   margin-top: 25px;
   margin-bottom: 10px;
-  margin-right: 500px;
+  margin-right: 450px;
+  margin-left: 50px;
 }
 
 /*BUTTONS*/
+
+.pro-button {
+  margin-left: 15px;
+}
 
 .pro-button,
 .client-signup,

@@ -23,12 +23,13 @@ router.post("/client-signup", async (req, res, next) => {
     const clientProfile = await Client.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      email: req.body.email,
       password: hashedPassword,
       city: req.body.city,
       postalcode: req.body.postalcode,
       phone: req.body.phone,
     });
-    res.redirect("/auth/client/client-login");
+    res.redirect("/");
   } catch (error) {
     console.log(error.message);
     res.render("auth/client-signup", {
