@@ -8,18 +8,18 @@
 
                 <form class="proFormInput" method="POST"
                         action="/auth/client/client-profile-edit/<%=client.id%>?_method=PUT">
-                        <label class="formInput">First Name:<input required type="text" name="firstname"
-                                        placeholder="First Name" value="<%= client.firstname%>" /></label>
-                        <label class="formInput">Last Name:<input required type="text" name="lastname"
-                                        placeholder="Last Name" value="<%= client.lastname%>" /></label>
-                        <label class="formInput">Email:<input required type="email" name="email" placeholder="Email"
-                                        value="<%= client.email%>" /></label>
-                        <label class="formInput">City:<input required type="text" name="city" placeholder="city"
-                                        value="<%= client.city%>" /></label>
-                        <label class="formInput">Postalcode: <input required type="text" name="postalcode"
-                                        placeholder="Postalcode" value="<%= client.postalcode%>" /></label>
-                        <label class="formInput">Phone Number: <input required type="text" name="phone"
-                                        placeholder="Phone Number" value="<%= client.phone%>" /></label>
+                        <label class="formInput">First Name: </label><input required type="text" name="firstname"
+                                placeholder="First Name" value="<%= client.firstname%>" />
+                        <label class="formInput">Last Name: </label><input required type="text" name="lastname"
+                                placeholder="Last Name" value="<%= client.lastname%>" />
+                        <label class="formInput">Email: </label><input required type="email" name="email"
+                                placeholder="Email" value="<%= client.email%>" />
+                        <label class="formInput">City: </label><input required type="text" name="city"
+                                placeholder="city" value="<%= client.city%>" />
+                        <label class="formInput">Postalcode: </label><input required type="text" name="postalcode"
+                                placeholder="Postalcode" value="<%= client.postalcode%>" />
+                        <label class="formInput">Phone Number: </label><input required type="text" name="phone"
+                                placeholder="Phone Number" value="<%= client.phone%>" />
                         <br>
                         <br>
                         <button class="pro-button">Update</button>

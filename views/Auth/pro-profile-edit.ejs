@@ -8,20 +8,20 @@
 
                 <form class="proFormInput" method="POST"
                         action="/auth/pro/pro-profile-edit/<%=professional.id%>?_method=PUT">
-                        <label class="formInput">First Name:<input required type="text" name="firstname"
-                                        placeholder="First Name" value="<%= professional.firstname%>" /></label>
-                        <label class="formInput">Last Name:<input required type="text" name="lastname"
-                                        placeholder="Last Name" value="<%= professional.lastname%>" /></label>
-                        <label class="formInput">Email:<input required type="email" name="email" placeholder="Email"
-                                        value="<%= professional.email%>" /></label>
-                        <label class="formInput">City:<input required type="text" name="city" placeholder="city"
-                                        value="<%= professional.city%>" /></label>
-                        <label class="formInput">Postalcode: <input required type="text" name="postalcode"
-                                        placeholder="Postalcode" value="<%= professional.postalcode%>" /></label>
-                        <label class="formInput">Phone Number: <input required type="text" name="phone"
-                                        placeholder="Phone Number" value="<%= professional.phone%>" /></label>
-                        <label class="formInput">Price: <input required type="text" name="price" placeholder="Price"
-                                        value="<%= professional.price%>" /></label>
+                        <label class="formInput">First Name: </label><input required type="text" name="firstname"
+                                placeholder="First Name" value="<%= professional.firstname%>" />
+                        <label class="formInput">Last Name: </label><input required type="text" name="lastname"
+                                placeholder="Last Name" value="<%= professional.lastname%>" />
+                        <label class="formInput">Email: </label><input required type="email" name="email"
+                                placeholder="Email" value="<%= professional.email%>" />
+                        <label class="formInput">City: </label><input required type="text" name="city"
+                                placeholder="city" value="<%= professional.city%>" />
+                        <label class="formInput">Postalcode: </label><input required type="text" name="postalcode"
+                                placeholder="Postalcode" value="<%= professional.postalcode%>" />
+                        <label class="formInput">Phone Number: </label><input required type="text" name="phone"
+                                placeholder="Phone Number" value="<%= professional.phone%>" />
+                        <label class="formInput">Price: </label><input required type="text" name="price"
+                                placeholder="Price" value="<%= professional.price%>" />
                         <label class="formInput" for="services">Service Offered:</label>
                         <select class="formInput" name="services" id="services" required>
                                 <option value="null">Choose a service</option>
