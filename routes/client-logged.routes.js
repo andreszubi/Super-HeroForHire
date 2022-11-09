@@ -20,6 +20,18 @@ router.post("/client-signup", async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
+    if (req.body.email === '' || req.body.password === '') {
+      res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
+      return;
+  }
+  
+      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!passwordRegex.test(req.body.password)) {
+      res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+      return;
+  } 
+
+
     const clientProfile = await Client.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -32,26 +44,17 @@ router.post("/client-signup", async (req, res, next) => {
     res.redirect("/");
   } catch (error) {
     console.log(error.message);
+    if (error.code === 11000) {
+        res.render('auth/client-signup', { errorMessage: 'Email is already in use.' });
+        return;
+    }
     res.render("auth/client-signup", {
       errorMessage: "Something went wrong. Please try again.",
     });
   }
 });
 
-/* if (email === '' || password === '') {
-        res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
-        return;
-    }
-    const emailRegex = /@/;
-    if (!emailRegex.test(email)) {
-        res.render('auth/client-signup', { errorMessage: 'Email format is not valid.' });
-        return;
-    }
-    const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-    if (!passwordRegex.test(password)) {
-        res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
-        return;
-    } */
+
 
 // GET route for displaying the login form
 
