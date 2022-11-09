@@ -29,7 +29,7 @@ router.post("/client-signup", async (req, res, next) => {
       postalcode: req.body.postalcode,
       phone: req.body.phone,
     });
-    res.redirect("/auth/client/client-login");
+    res.redirect("/");
   } catch (error) {
     console.log(error.message);
     res.render("auth/client-signup", {
@@ -67,27 +67,30 @@ router.post("/client-login", async (req, res, next) => {
       errorMessage:
         "Email is not registered or is incorrect. Try with another email.",
     });
-    res.redirect("/");
+    return;
+  } else {
+    if (bcrypt.compareSync(password, loggedClientUser.password)) {
+      req.session.client = loggedClientUser;
+      res.redirect(`/auth/client/client-search/${loggedClientUser._id}`);
+    } else {
+      res.render("auth/client-login", {
+        errorMessage: "Incorrect password!",
+      });
+    }
   }
-  }
-);
-
-// GET route for displaying the login form
-router.get('/client-login', (req, res, next) => {
-  res.render('auth/client-login');
 });
 
-router.post('/client-login', async (req, res, next) => {
-  const {email, password} = req.body;
- const currentUser = await Client.findOne({email});
-  if (!currentUser) {
-      res.render('auth/client-login', { errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
-      return;
-  }
-  if (bcrypt.compareSync(password, currentUser.password)) {
-      req.session.currentUser = currentUser;
-      res.redirect(`/auth/client/client-profile/${loggedClientUser._id}`);
-  }
+// GET route for SEARCH
+router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
+  const client = req.session.client;
+  res.render("auth/client-search", { client });
+});
+
+// POST route for RESULTS
+router.post("/client-search", clientIsLoggedIn, async (req, res, next) => {
+  const professional = await Professional.find({ services: req.body.services });
+  console.log(professional);
+  res.render("auth/client-results", { professional });
 });
 
 // GET route for BOOKING CONFIRMATION
@@ -140,9 +143,14 @@ router.delete("/client-profile/delete/:id", async (req, res, next) => {
 });
 
 // GET route for logging out
-router.get('/logout', (req, res, next) => {
-  req.session.destroy();
-  res.redirect('/');
+router.get("/logout", (req, res, next) => {
+  req.session.client = null;
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+    }
+    res.redirect("/");
+  });
 });
 
 module.exports = router;
