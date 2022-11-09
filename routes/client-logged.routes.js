@@ -12,7 +12,7 @@ const Professional = require("../models/Professional.model");
 // GET route for displaying the signup form
 
 router.get("/client-signup", (req, res, next) => {
-  res.render("auth/client-signup", { client: false });
+  res.render("auth/client-signup");
 });
 
 router.post("/client-signup", async (req, res, next) => {
@@ -68,13 +68,9 @@ router.post("/client-login", async (req, res, next) => {
         "Email is not registered or is incorrect. Try with another email.",
     });
     res.redirect("/");
-  } catch (error) {
-    console.log(error.message);
-    res.render("auth/client-signup", {
-      errorMessage: "Something went wrong. Please try again.",
-    });
   }
-});
+  }
+);
 
 // GET route for displaying the login form
 router.get('/client-login', (req, res, next) => {
@@ -90,7 +86,7 @@ router.post('/client-login', async (req, res, next) => {
   }
   if (bcrypt.compareSync(password, currentUser.password)) {
       req.session.currentUser = currentUser;
-      res.redirect('/auth/client/client-profile');
+      res.redirect(`/auth/client/client-profile/${loggedClientUser._id}`);
   }
 });
 
