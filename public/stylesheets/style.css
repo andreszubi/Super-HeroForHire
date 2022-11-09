@@ -9,6 +9,7 @@ body {
 .bodyProfile,
 .client-search-page {
   background-color: #fbde59;
+  min-height: 100vh;
 }
 
 /*NAVIGATION BAR*/
@@ -236,7 +237,6 @@ body {
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   width: 100%;
 }
-
 .proFormList {
   width: 100%;
   padding: 10px;
