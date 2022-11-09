@@ -1,30 +1,41 @@
-<h1 class="title">Edit your Profile</h1>
+<div class="bodyProfileEdit">
+        <nav class="navbar">
+                <h1 class="brandName">SuperheroForHire</h1>
+                <a href="/auth/pro/logout"><button class="pro-button" type="submit">Log out</button></a>
+        </nav>
+        <div class="proForm">
+                <h1 class="title">Edit your Profile</h1>
 
-<form method="POST" action="/auth/pro/pro-profile-edit/<%=professional.id%>?_method=PUT">
-        <label>First Name:<input required type="text" name="firstname" placeholder="First Name"
-                        value="<%= professional.firstname%>" /></label>
-        <label>Last Name:<input required type="text" name="lastname" placeholder="Last Name"
-                        value="<%= professional.lastname%>" /></label>
-        <label>Email:<input required type="email" name="email" placeholder="Email"
-                        value="<%= professional.email%>" /></label>
-        <label>City:<input required type="text" name="city" placeholder="city"
-                        value="<%= professional.city%>" /></label>
-        <label>Postalcode: <input required type="text" name="postalcode" placeholder="Postalcode"
-                        value="<%= professional.postalcode%>" /></label>
-        <label>Phone Number: <input required type="text" name="phone" placeholder="Phone Number"
-                        value="<%= professional.phone%>" /></label>
-        <label>Price: <input required type="text" name="price" placeholder="Price"
-                        value="<%= professional.price%>" /></label>
-        <label for="services">Service Offered:</label>
-        <select name="services" id="services" required>
-                <option value="null">Choose a service</option>
-                <option value="Babysitter">Babysitter</option>
-                <option value="Dogsitter">Dogsitter</option>
-                <option value="Hairstylist"> Hairstylist</option>
-                <option value="House Cleaning"> House Cleaning</option>
-                <option value="Landscaping">Landscaping</option>
-                <option value="Massage Therapy"> Massage Therapy</option>
-                <option value="Personal Trainer">Personal Trainer</option>
-        </select>
-        <button>Update</button>
-</form>
+                <form class="proFormInput" method="POST"
+                        action="/auth/pro/pro-profile-edit/<%=professional.id%>?_method=PUT">
+                        <label class="formInput">First Name:<input required type="text" name="firstname"
+                                        placeholder="First Name" value="<%= professional.firstname%>" /></label>
+                        <label class="formInput">Last Name:<input required type="text" name="lastname"
+                                        placeholder="Last Name" value="<%= professional.lastname%>" /></label>
+                        <label class="formInput">Email:<input required type="email" name="email" placeholder="Email"
+                                        value="<%= professional.email%>" /></label>
+                        <label class="formInput">City:<input required type="text" name="city" placeholder="city"
+                                        value="<%= professional.city%>" /></label>
+                        <label class="formInput">Postalcode: <input required type="text" name="postalcode"
+                                        placeholder="Postalcode" value="<%= professional.postalcode%>" /></label>
+                        <label class="formInput">Phone Number: <input required type="text" name="phone"
+                                        placeholder="Phone Number" value="<%= professional.phone%>" /></label>
+                        <label class="formInput">Price: <input required type="text" name="price" placeholder="Price"
+                                        value="<%= professional.price%>" /></label>
+                        <label class="formInput" for="services">Service Offered:</label>
+                        <select class="formInput" name="services" id="services" required>
+                                <option value="null">Choose a service</option>
+                                <option value="Babysitter">Babysitter</option>
+                                <option value="Dogsitter">Dogsitter</option>
+                                <option value="Hairstylist"> Hairstylist</option>
+                                <option value="House Cleaning"> House Cleaning</option>
+                                <option value="Landscaping">Landscaping</option>
+                                <option value="Massage Therapy"> Massage Therapy</option>
+                                <option value="Personal Trainer">Personal Trainer</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button class="pro-button">Update</button>
+                </form>
+        </div>
+</div>
