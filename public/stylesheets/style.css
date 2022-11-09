@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
 /*MAIN BACKGROUND*/
@@ -21,6 +22,7 @@ body {
   align-content: flex-end;
   justify-content: space-between;
   align-items: center;
+  padding-left: 10px;
 }
 
 .brandName {
@@ -244,3 +246,25 @@ body {
   padding: 10px;
   border-radius: 10px;
 } */
+
+
+/*Add background to the client search page*/
+
+.searchForm1 {
+  background-image: url("/images/superhero-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2.5em;
+}
+.proFormList {
+ font-size: 1.1em;
+}
+

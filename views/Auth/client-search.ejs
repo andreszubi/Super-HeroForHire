@@ -1,5 +1,9 @@
 <div class="client-search-page">
-<a href="/auth/client/client-profile/<%=client._id%>"><button>Profile</button></a>
+    <nav class="navbar">
+        <h3>We are here to make your life easier</h3>
+        <a href="/auth/client/client-profile/<%=client._id%>"><button>Profile</button></a>
+        <a href="/auth/client/logout"><button type="submit">Log out</button></a>
+    </nav>
 <h1>What are you searching for today?</h1>
 <div class="searchForm1">
     <form action="/auth/client/client-search" method="post">
@@ -19,4 +23,3 @@
 </div>
 </div>
 
-<a href="/auth/client/logout"><button type="submit">Log out</button></a>
