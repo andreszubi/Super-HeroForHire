@@ -1,0 +1,29 @@
+<h1 class="title">Search results</h1>
+
+
+
+<% professional.forEach(professional=> { %>
+    <a href="auth/pro/pro-profile/<%- professional.id %>">
+        <h2>
+            <%= professional.firstname %>
+                <%=professional.lastname %>
+        </h2>
+    </a>
+    <h3>
+        <%= professional.city %>
+    </h3>
+    <h3>
+        <%= professional.postalcode %>
+    </h3>
+    <h3>
+        <%= professional.services %>
+    </h3>
+    <h3>
+        <%= professional.price %>
+    </h3>
+    <a href="/auth/client/booking-confirmation"><button type="submit">Book</button></a>
+
+    <% }) %>
+
+
+        <a href="/auth/client/logout"><button type="submit">Log out</button></a>

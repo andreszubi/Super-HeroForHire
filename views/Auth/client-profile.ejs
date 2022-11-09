@@ -1,32 +1,19 @@
 <nav>
   <a href="">Edit Profile</a>
   <a href="">Delete Profile</a>
-  <form action="/" method="get"><button type="submit">Log out</button></form>
+  <form action="/logout" method="get"><button type="submit">Log out</button></form>
 </nav>
 
-<h1>Welcome!</h1>
+<a href="/auth/client/client-profile-edit/<%= client._id %>" method="post">Edit Profile</a>
 
-<h2>What are you searching for today?</h2>
-<div>
-<form action="">
-        House Cleaning
-         Hairstylist
-         Massage Therapy
-         Babysitter
-         Personal Trainer
-         Landscaping
-         Dogsitter
+<form method="POST" action="/auth/client/client-profile/delete/<%=client.id%>?_method=DELETE"><button
+    type="submit">Delete profile</button></form>
 
+<a href="/auth/client/logout"><button type="submit">Log out</button></a>
 
-</form>
-</div>
+<!-- <h1>Welcome!</h1> -->
 
-
-<h3>Edit profile</h3>
-<h3>Delete profile</h3>
 
 <!-- /*Upcoming bookings*/ , make responsive and that we can cancel? -->
 <h2>Requests Status</h2>
 <button>Cancel</button>
-
-

@@ -2,7 +2,231 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.proFormItem {
+/*MAIN BACKGROUND*/
+.containerMain,
+.bodyProSignUpForm,
+.bodyLoginForm,
+.bodyProfile {
+  background-color: #fbde59;
+}
+
+/*NAVIGATION BAR*/
+.navbar {
+  background-color: white;
+  display: flex;
+  width: 100vw;
+  align-content: flex-end;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.brandName {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-right: 500px;
+}
+
+/*BUTTONS*/
+
+.pro-button {
+  margin-left: 15px;
+}
+
+.pro-button,
+.client-signup,
+.client-loginBtn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #0c043c;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+}
+
+.pro-button:after,
+.client-signup:after,
+.client-loginBtn:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #8460ee;
+  border-radius: 10rem;
+  z-index: -2;
+}
+
+.pro-button:before,
+.client-signup:before,
+.client-loginBtn:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #663fdb;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+.pro-button:hover,
+.client-signup:hover,
+.client-loginBtn:hover {
+  color: #0c043c;
+}
+
+.pro-button:hover:before,
+.client-signup:hover:before,
+.client-loginBtn:hover:before {
+  width: 100%;
+}
+
+/*IMAGES*/
+.brandImg2,
+.brandImg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brandImg2 {
+  margin-top: 0;
+  padding-top: 50px;
+}
+
+/*LOGIN FORM*/
+.loginForm,
+.profInfo {
+  width: 30%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.loginFormInput {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginForm:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.formInput {
+  width: 100%;
+  display: inline-block;
+  padding: 12px 0px;
+  margin-top: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  border-radius: 4px;
+  color: gray;
+  font-size: 1rem;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.proForm {
+  width: 40%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.proForm:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.proFormInput {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  color: #0c043c;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+}
+
+.profInfo {
+  width: 30%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mainProf {
+  width: 100%;
+  margin-right: 150px;
+  margin-left: auto;
+}
+.profObj {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.profBtn {
+  padding-top: 300px;
+  padding-left: 150px;
+}
+
+/* .proFormItem {
   padding: 10px;
   margin: 10px 0px;
   border: 0;
@@ -15,4 +239,4 @@ body {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
-}
+} */

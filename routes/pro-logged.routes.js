@@ -20,9 +20,11 @@ router.post("/pro-signup", async (req, res, next) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
     const proProfile = await Professional.create({
-      fullname: req.body.fullname,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
       password: hashedPassword,
+      city: req.body.city,
       postalcode: req.body.postalcode,
       phone: req.body.phone,
       services: req.body.services,
@@ -31,7 +33,9 @@ router.post("/pro-signup", async (req, res, next) => {
     res.redirect(`/auth/pro/pro-login`);
   } catch (error) {
     console.log(error.message);
-    res.render("auth/pro-signup");
+    res.render("auth/pro-signup", {
+      errorMessage: "Something went wrong. Please try again.",
+    });
 
     //   if (email === "" || password === "") {
     //     res.render("auth/pro-signup", {
@@ -83,6 +87,8 @@ router.post("/pro-signup", async (req, res, next) => {
   }
 });
 
+//GET/POST route for Login
+
 router.get("/pro-login", (req, res) => {
   res.render("auth/pro-login");
 });
@@ -93,7 +99,7 @@ router.post("/pro-login", async (req, res) => {
   if (!loggedProUser) {
     //No user with that name//
     res.render("auth/pro-login", {
-      errorMessage: "No user with this username",
+      errorMessage: "No user with this email",
     });
   } else {
     if (bcrypt.compareSync(password, loggedProUser.password)) {
@@ -107,41 +113,53 @@ router.post("/pro-login", async (req, res) => {
       });
     }
   }
-
-  //   const loggedUser = await User.findOne({ name: name });
-  //   const checkPassword = await bcrypt.compare(password, loggedUser.password);
-  //   if (checkPassword) {
-
-  //   }
 });
+
+//GET route to profile
 
 router.get("/pro-profile/:id", proIsLoggedIn, async (req, res, next) => {
-  console.log("req", req.params.id);
-
   const professional = await Professional.findById(req.params.id);
-  console.log(professional);
   res.render("auth/pro-profile", { professional });
 });
+
+//EDIT profile
 
 router.get("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.findById(req.params.id);
   res.render("auth/pro-profile-edit", { professional });
 });
 
-router.put("/pro-profile-edit/:id", async (req, res, next) => {
-  const response = await Professional.findById(req.params.id);
-  response.fullname = req.body.fullname;
-  await response.save();
-  console.log(req.body.fullname);
-  res.send("hello");
+router.put("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
+  const professional = await Professional.findById(req.params.id);
+  const { firstname, lastname, email, city, postalcode, phone, price } =
+    req.body;
+  professional.firstname = firstname;
+  professional.lastname = firstname;
+  professional.email = email;
+  professional.city = city;
+  professional.postalcode = postalcode;
+  professional.phone = phone;
+  professional.price = price;
+  await professional.save();
+  res.redirect(`/auth/pro/pro-profile/${professional._id}`);
 });
 
-router.delete("/pro-profile/delete/:id", async (req, res, next) => {
-  await Professional.findByIdAndDelete(req.params.id);
-  res.redirect("/");
-});
+//DELETE profile
 
-router.get("/logout", proIsLoggedOut, (req, res, next) => {
+router.delete(
+  "/pro-profile/delete/:id",
+  proIsLoggedIn,
+  async (req, res, next) => {
+    await Professional.findByIdAndDelete(req.params.id);
+    res.redirect("/");
+  }
+);
+
+//Logout
+
+router.get("/logout", (req, res, next) => {
+  req.session.professional = null;
+  console.log("logout", req.session);
   req.session.destroy((err) => {
     if (err) {
       next(err);

@@ -3,6 +3,11 @@ const router = express.Router();
 const Client = require("../models/Client.model");
 const bcrypt = require("bcryptjs");
 const app = require("../app");
+const {
+  clientIsLoggedIn,
+  clientIsLoggedOut,
+} = require("../middleware/client-route-guard.js");
+const Professional = require("../models/Professional.model");
 
 // GET route for displaying the signup form
 
@@ -11,7 +16,28 @@ router.get("/client-signup", (req, res, next) => {
 });
 
 router.post("/client-signup", async (req, res, next) => {
-  /* if (email === '' || password === '') {
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+
+    const clientProfile = await Client.create({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      password: hashedPassword,
+      city: req.body.city,
+      postalcode: req.body.postalcode,
+      phone: req.body.phone,
+    });
+    res.redirect("/auth/client/client-login");
+  } catch (error) {
+    console.log(error.message);
+    res.render("auth/client-signup", {
+      errorMessage: "Something went wrong. Please try again.",
+    });
+  }
+});
+
+/* if (email === '' || password === '') {
         res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
         return;
     }
@@ -26,21 +52,24 @@ router.post("/client-signup", async (req, res, next) => {
         return;
     } */
 
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+// GET route for displaying the login form
 
-    await Client.create({
-      fullname: req.body.fullname,
-      email: req.body.email,
-      password: hashedPassword,
-      postalcode: req.body.postalcode,
-      phone: req.body.phone,
+router.get("/client-login", (req, res, next) => {
+  res.render("auth/client-login");
+});
+
+router.post("/client-login", async (req, res, next) => {
+  const { email, password } = req.body;
+  const loggedClientUser = await Client.findOne({ email });
+  if (!loggedClientUser) {
+    res.render("auth/client-login", {
+      errorMessage:
+        "Email is not registered or is incorrect. Try with another email.",
     });
     res.redirect("/");
   } catch (error) {
     console.log(error.message);
-    res.render("auth/client-signup", {isConnected: false}  ,{
+    res.render("auth/client-signup", {
       errorMessage: "Something went wrong. Please try again.",
     });
   }
@@ -48,14 +77,14 @@ router.post("/client-signup", async (req, res, next) => {
 
 // GET route for displaying the login form
 router.get('/client-login', (req, res, next) => {
-  res.render('auth/client-login', {isConnected: false});
+  res.render('auth/client-login');
 });
 
 router.post('/client-login', async (req, res, next) => {
   const {email, password} = req.body;
  const currentUser = await Client.findOne({email});
   if (!currentUser) {
-      res.render('auth/client-login', {isConnected: false} ,{ errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
+      res.render('auth/client-login', { errorMessage: 'Email is not registered or is incorrect. Try with another email.' });
       return;
   }
   if (bcrypt.compareSync(password, currentUser.password)) {
@@ -64,17 +93,59 @@ router.post('/client-login', async (req, res, next) => {
   }
 });
 
+// GET route for BOOKING CONFIRMATION
+router.get(
+  "/booking-confirmation",
+  clientIsLoggedIn,
+  async (req, res, next) => {
+    const client = req.session.client;
+    res.render("auth/booking-confirmation", { client });
+  }
+);
+
 // GET route for displaying the client profile
-router.get('/client-profile', (req, res, next) => {
-  res.render('auth/client-profile');
+router.get("/client-profile/:id", clientIsLoggedIn, async (req, res, next) => {
+  const client = await Client.findById(req.params.id);
+  res.render("auth/client-profile", { client });
+});
+
+//Edit client profile
+router.get(
+  "/client-profile-edit/:id",
+  clientIsLoggedIn,
+  async (req, res, next) => {
+    const client = await Client.findById(req.params.id);
+    res.render("auth/client-profile-edit", { client });
+  }
+);
+
+router.put(
+  "/client-profile-edit/:id",
+  clientIsLoggedIn,
+  async (req, res, next) => {
+    const client = await Client.findById(req.params.id);
+    const { firstname, lastname, email, city, postalcode, phone } = req.body;
+    client.firstname = firstname;
+    client.lastname = lastname;
+    client.email = email;
+    client.city = city;
+    client.postalcode = postalcode;
+    client.phone = phone;
+    await client.save();
+    res.redirect(`/auth/client/client-profile/${client._id}`);
+  }
+);
+
+//DELETE user
+router.delete("/client-profile/delete/:id", async (req, res, next) => {
+  await Client.findByIdAndDelete(req.params.id);
+  res.redirect("/");
 });
 
 // GET route for logging out
-router.get('/', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
 });
-
-
 
 module.exports = router;

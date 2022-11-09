@@ -1,6 +1,12 @@
-<h2>Client Signin Page</h2>
-<form action="/auth/client/client-signin" method="post">
-    <label for="">Email: <input type="email" name="email" placeholder="Email" />  </label>
-    <label for="">Password:  <input type="password" name="password" placeholder="Password" /> </label>
+<h1 class="title">Client Login Page</h1>
+<form action="/auth/client/client-login" method="post">
+    <label for="">Email: <input type="email" name="email" placeholder="Email" /> </label>
+    <label for="">Password: <input type="password" name="password" placeholder="Password" /> </label>
     <button type="submit">Login</button>
 </form>
+
+<% if (typeof errorMessage !=='undefined' ) { %>
+    <p style="color: red">
+        <%= errorMessage %>
+    </p>
+    <% } %>
