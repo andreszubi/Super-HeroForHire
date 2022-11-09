@@ -102,8 +102,7 @@ router.post("/pro-signup", async (req, res, next) => {
     // } else {
     //   next(error);
     // }
-  }
-});
+
 
 //GET/POST route for Login
 
