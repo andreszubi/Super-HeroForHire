@@ -19,7 +19,19 @@ router.post("/pro-signup", async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-    const proProfile = await Professional.create({
+    if (req.body.email === '' || req.body.password === '') {
+      res.render('auth/pro-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
+      return;
+  }
+  
+      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!passwordRegex.test(req.body.password)) {
+      res.render('auth/pro-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
+      return;
+  } 
+
+
+    const clientProfile = await Professional.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
@@ -30,12 +42,18 @@ router.post("/pro-signup", async (req, res, next) => {
       services: req.body.services,
       price: req.body.price,
     });
-    res.redirect(`/auth/pro/pro-login`);
+    res.redirect("/");
   } catch (error) {
     console.log(error.message);
+    if (error.code === 11000) {
+        res.render('auth/pro-signup', { errorMessage: 'Email is already in use.' });
+        return;
+    }
     res.render("auth/pro-signup", {
       errorMessage: "Something went wrong. Please try again.",
     });
+  }
+});
 
     //   if (email === "" || password === "") {
     //     res.render("auth/pro-signup", {

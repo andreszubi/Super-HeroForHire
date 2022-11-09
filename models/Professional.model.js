@@ -16,6 +16,13 @@ const proSchema = new Schema({
     unique: true,
     lowercase: true,
     trim: true,
+    validate: {
+      validator: (value) => {
+        const emailRegex = /@/;
+        return emailRegex.test(value);
+      }, 
+      message: props => `${props.value} is not a valid email!`
+    }
   },
   password: {
     type: String,
