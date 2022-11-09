@@ -1,17 +1,32 @@
-<nav>
-  <form action="/logout" method="get"><button type="submit">Log out</button></form>
-</nav>
+<div class="bodyProfile">
+  <nav class="navbar">
+    <h1 class="brandName">SuperheroForHire</h1>
+    <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
+  </nav>
+  <div class="profObj">
+    <div class="profBtn">
+      <a href="/auth/client/client-profile-edit/<%= client._id %>/"><button class="pro-button" type="submit">Edit
+          profile</button></a>
+      <br>
+      <br>
+      <form method="POST" action="/auth/client/client-profile/delete/<%=client.id%>?_method=DELETE">
+        <button class="deleteBtn pro-button" type="submit">Delete profile</button>
+      </form>
+    </div>
+    <div class="mainProf">
+      <div class="profInfo">
+        <h1 class="title">Your profile</h1>
+        <h3><label>First Name: <%= client.firstname%></label> </h3>
+        <h3><label>Last Name: <%= client.lastname%></label> </h3>
+        <h3><label>Email: <%= client.email%></label> </h3>
+        <h3><label>City: <%= client.city%></label> </h3>
+        <h3><label>Postal code: <%= client.postalcode%></label> </h3>
+        <h3><label>Phone: <%= client.phone%></label> </h3>
+      </div>
+    </div>
+  </div>
 
-<a href="/auth/client/client-profile-edit/<%= client._id %>" method="post">Edit Profile</a>
+</div>
 
-<form method="POST" action="/auth/client/client-profile/delete/<%=client.id%>?_method=DELETE"><button
-    type="submit">Delete profile</button></form>
-
-<a href="/auth/client/logout"><button type="submit">Log out</button></a>
 
 <!-- <h1>Welcome!</h1> -->
-
-
-<!-- /*Upcoming bookings*/ , make responsive and that we can cancel? -->
-<h2>Requests Status</h2>
-<button>Cancel</button>

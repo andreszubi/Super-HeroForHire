@@ -7,17 +7,19 @@ body {
 .bodyProSignUpForm,
 .bodyLoginForm,
 .bodyProfile,
-.client-search-page {
+.client-search-page,
+.bodyProfileEdit {
   background-color: #fbde59;
+  min-height: 100vh;
 }
 
 /*NAVIGATION BAR*/
 .navbar {
-  background-color: #0C043C;
+  background-color: #0c043c;
   color: white;
   display: flex;
   align-content: flex-end;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -34,7 +36,7 @@ body {
 /*BUTTONS*/
 
 .pro-button {
-  margin-left: 100px;
+  margin-left: 15px;
 }
 
 .pro-button,
@@ -155,7 +157,6 @@ body {
   font-size: 1rem;
   box-sizing: border-box;
   justify-content: center;
-
 }
 
 .proForm {
@@ -197,7 +198,7 @@ body {
 }
 
 .profInfo {
-  width: 30%;
+  width: 60%;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -222,6 +223,7 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .profBtn {
@@ -237,7 +239,6 @@ body {
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   width: 100%;
 }
-
 .proFormList {
   width: 100%;
   padding: 10px;
