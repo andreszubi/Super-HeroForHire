@@ -6,7 +6,8 @@ body {
 .containerMain,
 .bodyProSignUpForm,
 .bodyLoginForm,
-.bodyProfile {
+.bodyProfile,
+.client-search-page {
   background-color: #fbde59;
 }
 
