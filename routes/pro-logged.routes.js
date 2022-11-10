@@ -45,7 +45,7 @@ router.post(
         return;
       }
 
-      const clientProfile = await Professional.create({
+      const professionalProfile = await Professional.create({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,

@@ -54,7 +54,7 @@ router.post(
         city: req.body.city,
         postalcode: req.body.postalcode,
         phone: req.body.phone,
-        image: req.body.path,
+        image: req.file.path,
       });
       res.redirect("/");
     } catch (error) {
