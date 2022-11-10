@@ -119,11 +119,12 @@ const proSchema = new Schema({
 });
 
 const Professional = model("Professional", proSchema);
-# Links
+# Trello
+https://trello.com/b/mixw5hho/project-2
 
-Trello: ![](https://trello.com/invite/b/mixw5hho/ATTIef5b257c870fa0ea0abe33dfe06afd9f68CE5F49/project-2)
 
-# Git
+
+# Git & Cyclic
 Repository link:
 https://github.com/andreszubi/Super-HeroForHire
 
