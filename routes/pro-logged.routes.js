@@ -57,7 +57,7 @@ router.post(
         price: req.body.price,
         image: req.file.path,
       });
-      res.redirect("/pro-login");
+      res.redirect("/auth/pro/pro-login");
     } catch (error) {
       console.log(error.message);
       if (error.code === 11000) {
