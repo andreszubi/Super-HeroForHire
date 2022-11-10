@@ -8,6 +8,7 @@ const {
   clientIsLoggedOut,
 } = require("../middleware/client-route-guard.js");
 const Professional = require("../models/Professional.model");
+const uploader = require("../middleware/cloudinary.config");
 
 // GET route for displaying the signup form
 
@@ -15,46 +16,61 @@ router.get("/client-signup", (req, res, next) => {
   res.render("auth/client-signup");
 });
 
-router.post("/client-signup", async (req, res, next) => {
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+router.post(
+  "/client-signup",
+  uploader.single("imageUrl"),
+  async (req, res, next) => {
+    try {
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-    if (req.body.email === '' || req.body.password === '') {
-      res.render('auth/client-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
-      return;
-  }
-  
-      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (!passwordRegex.test(req.body.password)) {
-      res.render('auth/client-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
-      return;
-  } 
-
-
-    const clientProfile = await Client.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: hashedPassword,
-      city: req.body.city,
-      postalcode: req.body.postalcode,
-      phone: req.body.phone,
-    });
-    res.redirect("/");
-  } catch (error) {
-    console.log(error.message);
-    if (error.code === 11000) {
-        res.render('auth/client-signup', { errorMessage: 'Email is already in use.' });
+      if (!req.file) {
+        next(new Error("No file uploaded!"));
         return;
+      }
+
+      if (req.body.email === "" || req.body.password === "") {
+        res.render("auth/client-signup", {
+          errorMessage:
+            "All fields are mandatory. Please provide your email and password.",
+        });
+        return;
+      }
+
+      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+      if (!passwordRegex.test(req.body.password)) {
+        res.render("auth/client-signup", {
+          errorMessage:
+            "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
+        });
+        return;
+      }
+
+      const clientProfile = await Client.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hashedPassword,
+        city: req.body.city,
+        postalcode: req.body.postalcode,
+        phone: req.body.phone,
+        image: req.body.path,
+      });
+      res.redirect("/");
+    } catch (error) {
+      console.log(error.message);
+      if (error.code === 11000) {
+        res.render("auth/client-signup", {
+          errorMessage: "Email is already in use.",
+        });
+        return;
+      }
+      res.render("auth/client-signup", {
+        errorMessage: "Something went wrong. Please try again.",
+      });
     }
-    res.render("auth/client-signup", {
-      errorMessage: "Something went wrong. Please try again.",
-    });
   }
-});
-
-
+);
 
 // GET route for displaying the login form
 
