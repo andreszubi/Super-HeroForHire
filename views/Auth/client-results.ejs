@@ -1,33 +1,81 @@
-<div class="client-search-page">
-<nav class="navbar">
-    <h3>We are here to make your life easier</h3>
-    <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
-</nav>
-<h1 class="title">Search results</h1>
+<div class="client-search-page content">
+    <nav class="navbar">
+        <h3>We are here to make your life easier</h3>
+        <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
+    </nav>
+    <div class="searchResults">
+        <div>
+            <h1 class="title">Search results</h1>
+        </div>
 
+        <% professional.forEach(professional=> { %>
+            <div class="card">
+                <div class="firstinfo">
+                    <img class="userImg" src=<%=professional.image%>>
+                </div>
+                <div class="profileinfo">
+                    <h2 class="names">
+                        <%= professional.firstname %>
+                            <%=professional.lastname %>
+                    </h2>
+                    <h3 class="extraInf">
+                        <%= professional.city %>, <%= professional.postalcode %>
+                    </h3>
+                    <h3 class="extraInf">
+                        <%= professional.services %>
+                    </h3>
+                    <h3 class="extraInf">
+                        <%= professional.price %>
+                    </h3>
+                </div>
+                <div><a href="/auth/client/booking-confirmation"><button class="button-24"
+                            type="submit">Book</button></a></div>
+            </div>
+            <% }) %>
 
-
-<% professional.forEach(professional=> { %>
-    <a href="auth/pro/pro-profile/<%- professional.id %>">
-        <h2>
-            <%= professional.firstname %>
-                <%=professional.lastname %>
-        </h2>
-    </a>
-    <h3>
-        <%= professional.city %>
-    </h3>
-    <h3>
-        <%= professional.postalcode %>
-    </h3>
-    <h3>
-        <%= professional.services %>
-    </h3>
-    <h3>
-        <%= professional.price %>
-    </h3>
-    <a href="/auth/client/booking-confirmation"><button type="submit">Book</button></a>
-
-    <% }) %>
-
+    </div>
 </div>
+
+
+
+
+
+
+<!-- <div class="client-search-page">
+    <nav class="navbar">
+        <h3>We are here to make your life easier</h3>
+        <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
+    </nav>
+    <div class="searchResults">
+        <div>
+            <h1 class="title">Search results</h1>
+        </div>
+        <div class="proList">
+            <% professional.forEach(professional=> { %>
+                <a href="auth/pro/pro-profile/<%- professional.id %>"></a>
+                <img class="userImg" src=<%=professional.image%>>
+                <h2>
+                    <%= professional.firstname %>
+                        <%=professional.lastname %>
+                </h2>
+                <h3>
+                    <%= professional.city %>
+                </h3>
+                <h3>
+                    <%= professional.postalcode %>
+                </h3>
+                <h3>
+                    <%= professional.services %>
+                </h3>
+                <h3>
+                    <%= professional.price %>
+                </h3>
+                <a href="/auth/client/booking-confirmation"><button type="submit">Book</button></a>
+
+                <% }) %>
+        </div>
+    </div>
+
+
+
+</div> -->

@@ -9,7 +9,8 @@ body {
 .bodyLoginForm,
 .bodyProfile,
 .client-search-page,
-.bodyProfileEdit {
+.bodyProfileEdit,
+.bodyConfirmation {
   background-color: #fbde59;
   min-height: 100vh;
 }
@@ -253,7 +254,6 @@ body {
   border-radius: 10px;
 } */
 
-
 /*Add background to the client search page*/
 
 .searchForm1 {
@@ -271,6 +271,97 @@ body {
   font-size: 2.5em;
 }
 .proFormList {
- font-size: 1.1em;
+  font-size: 1.1em;
 }
 
+/* .proList {
+  background-color: #8460ee;
+} */
+
+.card {
+  width: 500px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 3px;
+  /* background-color: blue; */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.userImg {
+  padding: 20px 0 0 0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+  position: relative;
+}
+
+.profileinfo {
+  padding: 5px 0px;
+}
+/* .names {
+  font-size: 1.8em;
+} */
+.extraInf {
+  font-style: italic;
+}
+
+.button-24 {
+  background: #8460ee;
+  border: 1px solid #8460ee;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #8460ee;
+}
+
+.button-24:active {
+  opacity: 0.5;
+}
+
+.backImg {
+  background-image: url("/images/Superhero-1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2.5em;
+}
