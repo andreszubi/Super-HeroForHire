@@ -334,14 +334,22 @@ body {
   opacity: 0.5;
 }
 
+.transImg {
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .backImg {
   background-image: url("/images/Superhero-1.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
-  /* height: 100vh; */
-  width: 70%;
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -349,7 +357,29 @@ body {
   font-size: 2.5em;
 }
 
+.confText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+.textConf {
+  font-size: 1.2em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
