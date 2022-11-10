@@ -7,6 +7,7 @@ const {
   proIsLoggedIn,
   proIsLoggedOut,
 } = require("../middleware/professional-route-guard.js");
+const uploader = require("../middleware/cloudinary.config");
 
 // GET route for displaying the signup form
 
@@ -14,95 +15,111 @@ router.get("/pro-signup", (req, res, next) => {
   res.render("auth/pro-signup");
 });
 
-router.post("/pro-signup", async (req, res, next) => {
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+router.post(
+  "/pro-signup",
+  uploader.single("imageUrl"),
+  async (req, res, next) => {
+    try {
+      const salt = bcrypt.genSaltSync(10);
+      const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-    if (req.body.email === '' || req.body.password === '') {
-      res.render('auth/pro-signup', { errorMessage: 'All fields are mandatory. Please provide your email and password.' });
-      return;
-  }
-  
-      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-  if (!passwordRegex.test(req.body.password)) {
-      res.render('auth/pro-signup', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
-      return;
-  } 
-
-
-    const clientProfile = await Professional.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: hashedPassword,
-      city: req.body.city,
-      postalcode: req.body.postalcode,
-      phone: req.body.phone,
-      services: req.body.services,
-      price: req.body.price,
-    });
-    res.redirect("/");
-  } catch (error) {
-    console.log(error.message);
-    if (error.code === 11000) {
-        res.render('auth/pro-signup', { errorMessage: 'Email is already in use.' });
+      if (!req.file) {
+        next(new Error("No file uploaded!"));
         return;
+      }
+
+      if (req.body.email === "" || req.body.password === "") {
+        res.render("auth/pro-signup", {
+          errorMessage:
+            "All fields are mandatory. Please provide your email and password.",
+        });
+        return;
+      }
+
+      const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+      if (!passwordRegex.test(req.body.password)) {
+        res.render("auth/pro-signup", {
+          errorMessage:
+            "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
+        });
+        return;
+      }
+
+      const clientProfile = await Professional.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hashedPassword,
+        city: req.body.city,
+        postalcode: req.body.postalcode,
+        phone: req.body.phone,
+        services: req.body.services,
+        price: req.body.price,
+        image: req.file.path,
+      });
+      res.redirect("/");
+    } catch (error) {
+      console.log(error.message);
+      if (error.code === 11000) {
+        res.render("auth/pro-signup", {
+          errorMessage: "Email is already in use.",
+        });
+        return;
+      }
+      res.render("auth/pro-signup", {
+        errorMessage: "Something went wrong. Please try again.",
+      });
     }
-    res.render("auth/pro-signup", {
-      errorMessage: "Something went wrong. Please try again.",
-    });
   }
-});
+);
 
-    //   if (email === "" || password === "") {
-    //     res.render("auth/pro-signup", {
-    //       errorMessage:
-    //         "All fields are mandatory. Please provide your email and password.",
-    //     });
-    //     return;
-    //   }
-    //   const emailRegex = /@/;
-    //   if (!emailRegex.test(email)) {
-    //     res.render("auth/pro-signup", {
-    //       errorMessage: "Email format is not valid.",
-    //     });
-    //     return;
-    //   }
-    //   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-    //   if (!passwordRegex.test(password)) {
-    //     res.render("auth/pro-signup", {
-    //       errorMessage:
-    //         "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    //     });
-    //     return;
-    //   }
-    //   if (services.length === 0) {
-    //     res.render("auth/pro-signup", {
-    //       errorMessage: "You must select at least one service.",
-    //     });
-    //     return;
-    //   }
+//   if (email === "" || password === "") {
+//     res.render("auth/pro-signup", {
+//       errorMessage:
+//         "All fields are mandatory. Please provide your email and password.",
+//     });
+//     return;
+//   }
+//   const emailRegex = /@/;
+//   if (!emailRegex.test(email)) {
+//     res.render("auth/pro-signup", {
+//       errorMessage: "Email format is not valid.",
+//     });
+//     return;
+//   }
+//   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+//   if (!passwordRegex.test(password)) {
+//     res.render("auth/pro-signup", {
+//       errorMessage:
+//         "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
+//     });
+//     return;
+//   }
+//   if (services.length === 0) {
+//     res.render("auth/pro-signup", {
+//       errorMessage: "You must select at least one service.",
+//     });
+//     return;
+//   }
 
-    //   if (price < 0) {
-    //     res.render("auth/pro-signup", {
-    //       errorMessage: "Price per hour must be filled out.",
-    //     });
-    //     return;
-    //   }
+//   if (price < 0) {
+//     res.render("auth/pro-signup", {
+//       errorMessage: "Price per hour must be filled out.",
+//     });
+//     return;
+//   }
 
-    // if (error instanceof mongoose.Error.ValidationError) {
-    //   res
-    //     .status(500)
-    //     .render("auth/pro-signup", { errorMessage: error.message });
-    // } else if (error.code === 11000) {
-    //   res.status(500).render("auth/pro-signup", {
-    //     errorMessage: "Email needs to be unique. The email is already used.",
-    //   });
-    // } else {
-    //   next(error);
-    // }
-
+// if (error instanceof mongoose.Error.ValidationError) {
+//   res
+//     .status(500)
+//     .render("auth/pro-signup", { errorMessage: error.message });
+// } else if (error.code === 11000) {
+//   res.status(500).render("auth/pro-signup", {
+//     errorMessage: "Email needs to be unique. The email is already used.",
+//   });
+// } else {
+//   next(error);
+// }
 
 //GET/POST route for Login
 

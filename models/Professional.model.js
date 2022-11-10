@@ -20,9 +20,9 @@ const proSchema = new Schema({
       validator: (value) => {
         const emailRegex = /@/;
         return emailRegex.test(value);
-      }, 
-      message: props => `${props.value} is not a valid email!`
-    }
+      },
+      message: (props) => `${props.value} is not a valid email!`,
+    },
   },
   password: {
     type: String,
@@ -47,6 +47,9 @@ const proSchema = new Schema({
   price: {
     type: String,
     required: true,
+  },
+  image: {
+    type: String,
   },
 });
 

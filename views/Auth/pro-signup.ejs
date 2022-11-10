@@ -4,7 +4,8 @@
     </div>
     <div class="proForm">
         <h1 class="title">Superhero Signup</h1>
-        <form class="proFormInput" action="/auth/pro/pro-signup" method="post">
+        <form class="proFormInput" action="/auth/pro/pro-signup" method="post" enctype="multipart/form-data">
+            <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
             <input type="text" name="firstname" required />
             <label class="formInput">Last Name:</label>
