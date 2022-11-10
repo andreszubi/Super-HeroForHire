@@ -240,30 +240,13 @@ body {
   flex-direction: column;
 }
 
-/* .proFormItem {
-  padding: 10px;
-  margin: 10px 0px;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  width: 100%;
-}
-.proFormList {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-} */
-
-/*Add background to the client search page*/
-
 .searchForm1 {
   background-image: url("/images/Superhero-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
-  height: 100vh;
-  width: 100%;
+  /* height: 100vh; */
+  width: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
