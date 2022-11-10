@@ -1,5 +1,4 @@
 const clientIsLoggedIn = (req, res, next) => {
-  console.log("hello", req.session);
   if (!req.session.client) {
     return res.redirect("/auth/client/client-login");
   }
