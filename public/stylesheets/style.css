@@ -257,7 +257,7 @@ body {
 /*Add background to the client search page*/
 
 .searchForm1 {
-  background-image: url("./images/superhero-2.jpg");
+  background-image: url("/images/Superhero-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
