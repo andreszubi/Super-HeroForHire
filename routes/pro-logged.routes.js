@@ -168,7 +168,7 @@ router.put("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   const { firstname, lastname, email, city, postalcode, phone, price } =
     req.body;
   professional.firstname = firstname;
-  professional.lastname = firstname;
+  professional.lastname = lastname;
   professional.email = email;
   professional.city = city;
   professional.postalcode = postalcode;

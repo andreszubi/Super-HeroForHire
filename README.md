@@ -1,7 +1,7 @@
 # Super-HeroForHire
 
 # Description
-We wanted to create a website for people who have a very busy life schedule and who want to improve their life's quality by spending less time on looking for someone to do a job for them and to also help them out to cut out from their time, having to commute to another place in order to make their life's easier. The purpose of the website is for professionals to sign up and advertise their services offered as well a price. Then the client would create a profile and look for 
+We wanted to create a website for people who have a very busy life schedule and who want to improve their life's quality by spending less time on looking for someone to do a job for them and to also help them out to cut out from their time, having to commute to another place in order to make their life's easier. The purpose of the website is for professionals to sign up and advertise their services offered as well a price. Then the client would create a profile and look for a professional who is offering the services for which they are searching for.
 # User Stories
 
 <!-- 404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
@@ -28,10 +28,14 @@ List of other features outside of the MVPs scope
 Trello: ![](https://trello.com/invite/b/mixw5hho/ATTIef5b257c870fa0ea0abe33dfe06afd9f68CE5F49/project-2)
 
 # Git
-
-Url to repository and to deployed project
-
 Repository link:
+https://github.com/andreszubi/Super-HeroForHire
+
+
 Deploy link:
 
+https://bright-gold-bee.cyclic.app/
+
 # Slides
+
+https://docs.google.com/presentation/d/1GTvOjIYCE_cBeTKB6GGCHHztVFPigvsywyOoOx6LwyM/edit?usp=sharing
