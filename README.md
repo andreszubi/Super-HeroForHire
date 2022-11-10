@@ -1,4 +1,5 @@
-# Super-HeroForHire
+# Super-HeroForHire 
+# by Andres Zubizarreta and Tatiana Toledo
 
 # Description
 We wanted to create a website for people who have a very busy life schedule and who want to improve their life's quality by spending less time on looking for someone to do a job for them and to also help them out to cut out from their time, having to commute to another place in order to make their life's easier. The purpose of the website is for professionals to sign up and advertise their services offered as well a price. Then the client would create a profile and look for a professional who is offering the services for which they are searching for.
@@ -119,11 +120,12 @@ const proSchema = new Schema({
 });
 
 const Professional = model("Professional", proSchema);
-# Links
+# Trello
+https://trello.com/b/mixw5hho/project-2
 
-Trello: ![](https://trello.com/invite/b/mixw5hho/ATTIef5b257c870fa0ea0abe33dfe06afd9f68CE5F49/project-2)
 
-# Git
+
+# Git & Cyclic
 Repository link:
 https://github.com/andreszubi/Super-HeroForHire
 

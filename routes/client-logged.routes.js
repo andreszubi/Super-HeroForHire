@@ -108,8 +108,8 @@ router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
 // POST route for RESULTS
 router.post("/client-search", clientIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.find({ services: req.body.services });
-  console.log(professional);
-  res.render("Auth/client-results", { professional });
+  const client = req.session.client;
+  res.render("Auth/client-results", { professional, client });
 });
 
 // GET route for BOOKING CONFIRMATION

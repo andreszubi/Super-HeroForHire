@@ -1,6 +1,7 @@
 <div class="client-search-page content">
     <nav class="navbar">
         <h3>We are here to make your life easier</h3>
+        <a href="/auth/client/client-search/<%=client._id%>"><button class="pro-button">Search Again</button></a>
         <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
     </nav>
     <div>
@@ -26,7 +27,7 @@
                         <%= professional.services %>
                     </h3>
                     <h3 class="extraInf">
-                        <%= professional.price %>
+                       Hourly rate: $ <%= professional.price %>
                     </h3>
                 </div>
                 <div><a href="/auth/client/booking-confirmation"><button class="button-24"
