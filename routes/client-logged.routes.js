@@ -13,7 +13,7 @@ const uploader = require("../middleware/cloudinary.config");
 // GET route for displaying the signup form
 
 router.get("/client-signup", (req, res, next) => {
-  res.render("auth/client-signup");
+  res.render("Auth/client-signup");
 });
 
 router.post(
@@ -30,7 +30,7 @@ router.post(
       }
 
       if (req.body.email === "" || req.body.password === "") {
-        res.render("auth/client-signup", {
+        res.render("Auth/client-signup", {
           errorMessage:
             "All fields are mandatory. Please provide your email and password.",
         });
@@ -39,7 +39,7 @@ router.post(
 
       const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
       if (!passwordRegex.test(req.body.password)) {
-        res.render("auth/client-signup", {
+        res.render("Auth/client-signup", {
           errorMessage:
             "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
         });
@@ -60,12 +60,12 @@ router.post(
     } catch (error) {
       console.log(error.message);
       if (error.code === 11000) {
-        res.render("auth/client-signup", {
+        res.render("Auth/client-signup", {
           errorMessage: "Email is already in use.",
         });
         return;
       }
-      res.render("auth/client-signup", {
+      res.render("Auth/client-signup", {
         errorMessage: "Something went wrong. Please try again.",
       });
     }
@@ -75,14 +75,14 @@ router.post(
 // GET route for displaying the login form
 
 router.get("/client-login", (req, res, next) => {
-  res.render("auth/client-login");
+  res.render("Auth/client-login");
 });
 
 router.post("/client-login", async (req, res, next) => {
   const { email, password } = req.body;
   const loggedClientUser = await Client.findOne({ email });
   if (!loggedClientUser) {
-    res.render("auth/client-login", {
+    res.render("Auth/client-login", {
       errorMessage:
         "Email is not registered or is incorrect. Try with another email.",
     });
@@ -90,9 +90,9 @@ router.post("/client-login", async (req, res, next) => {
   } else {
     if (bcrypt.compareSync(password, loggedClientUser.password)) {
       req.session.client = loggedClientUser;
-      res.redirect(`/auth/client/client-search/${loggedClientUser._id}`);
+      res.redirect(`/Auth/client/client-search/${loggedClientUser._id}`);
     } else {
-      res.render("auth/client-login", {
+      res.render("Auth/client-login", {
         errorMessage: "Incorrect password!",
       });
     }
@@ -102,14 +102,14 @@ router.post("/client-login", async (req, res, next) => {
 // GET route for SEARCH
 router.get("/client-search/:id", clientIsLoggedIn, async (req, res, next) => {
   const client = req.session.client;
-  res.render("auth/client-search", { client });
+  res.render("Auth/client-search", { client });
 });
 
 // POST route for RESULTS
 router.post("/client-search", clientIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.find({ services: req.body.services });
   console.log(professional);
-  res.render("auth/client-results", { professional });
+  res.render("Auth/client-results", { professional });
 });
 
 // GET route for BOOKING CONFIRMATION
@@ -118,14 +118,14 @@ router.get(
   clientIsLoggedIn,
   async (req, res, next) => {
     const client = req.session.client;
-    res.render("auth/booking-confirmation", { client });
+    res.render("Auth/booking-confirmation", { client });
   }
 );
 
 // GET route for displaying the client profile
 router.get("/client-profile/:id", clientIsLoggedIn, async (req, res, next) => {
   const client = await Client.findById(req.params.id);
-  res.render("auth/client-profile", { client });
+  res.render("Auth/client-profile", { client });
 });
 
 //Edit client profile
@@ -134,7 +134,7 @@ router.get(
   clientIsLoggedIn,
   async (req, res, next) => {
     const client = await Client.findById(req.params.id);
-    res.render("auth/client-profile-edit", { client });
+    res.render("Auth/client-profile-edit", { client });
   }
 );
 
@@ -151,7 +151,7 @@ router.put(
     client.postalcode = postalcode;
     client.phone = phone;
     await client.save();
-    res.redirect(`/auth/client/client-profile/${client._id}`);
+    res.redirect(`/Auth/client/client-profile/${client._id}`);
   }
 );
 

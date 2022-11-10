@@ -12,7 +12,7 @@ const uploader = require("../middleware/cloudinary.config");
 // GET route for displaying the signup form
 
 router.get("/pro-signup", (req, res, next) => {
-  res.render("auth/pro-signup");
+  res.render("Auth/pro-signup");
 });
 
 router.post(
@@ -29,7 +29,7 @@ router.post(
       }
 
       if (req.body.email === "" || req.body.password === "") {
-        res.render("auth/pro-signup", {
+        res.render("Auth/pro-signup", {
           errorMessage:
             "All fields are mandatory. Please provide your email and password.",
         });
@@ -38,7 +38,7 @@ router.post(
 
       const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
       if (!passwordRegex.test(req.body.password)) {
-        res.render("auth/pro-signup", {
+        res.render("Auth/pro-signup", {
           errorMessage:
             "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
         });
@@ -61,12 +61,12 @@ router.post(
     } catch (error) {
       console.log(error.message);
       if (error.code === 11000) {
-        res.render("auth/pro-signup", {
+        res.render("Auth/pro-signup", {
           errorMessage: "Email is already in use.",
         });
         return;
       }
-      res.render("auth/pro-signup", {
+      res.render("Auth/pro-signup", {
         errorMessage: "Something went wrong. Please try again.",
       });
     }
@@ -124,7 +124,7 @@ router.post(
 //GET/POST route for Login
 
 router.get("/pro-login", (req, res) => {
-  res.render("auth/pro-login");
+  res.render("Auth/pro-login");
 });
 
 router.post("/pro-login", async (req, res) => {
@@ -132,17 +132,17 @@ router.post("/pro-login", async (req, res) => {
   const loggedProUser = await Professional.findOne({ email });
   if (!loggedProUser) {
     //No user with that name//
-    res.render("auth/pro-login", {
+    res.render("Auth/pro-login", {
       errorMessage: "No user with this email",
     });
   } else {
     if (bcrypt.compareSync(password, loggedProUser.password)) {
       //User with right password//
       req.session.professional = loggedProUser;
-      res.redirect(`/auth/pro/pro-profile/${loggedProUser._id}`);
+      res.redirect(`/Auth/pro/pro-profile/${loggedProUser._id}`);
     } else {
       //User and incorrect password//
-      res.render("auth/pro-login", {
+      res.render("Auth/pro-login", {
         errorMessage: "Incorrect password!",
       });
     }
@@ -153,14 +153,14 @@ router.post("/pro-login", async (req, res) => {
 
 router.get("/pro-profile/:id", proIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.findById(req.params.id);
-  res.render("auth/pro-profile", { professional });
+  res.render("Auth/pro-profile", { professional });
 });
 
 //EDIT profile
 
 router.get("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   const professional = await Professional.findById(req.params.id);
-  res.render("auth/pro-profile-edit", { professional });
+  res.render("Auth/pro-profile-edit", { professional });
 });
 
 router.put("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
@@ -175,7 +175,7 @@ router.put("/pro-profile-edit/:id", proIsLoggedIn, async (req, res, next) => {
   professional.phone = phone;
   professional.price = price;
   await professional.save();
-  res.redirect(`/auth/pro/pro-profile/${professional._id}`);
+  res.redirect(`/Auth/pro/pro-profile/${professional._id}`);
 });
 
 //DELETE profile
