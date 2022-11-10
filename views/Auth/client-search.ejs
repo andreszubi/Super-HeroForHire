@@ -1,25 +1,31 @@
 <div class="client-search-page">
     <nav class="navbar">
-        <h3>We are here to make your life easier</h3>
-        <a href="/auth/client/client-profile/<%=client._id%>"><button class="pro-button">Profile</button></a>
-        <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
+        <div>
+            <h1 class="brandName">We are here to make your life easier!</h1>
+        </div>
+        <div>
+            <a href="/auth/client/client-search/<%=client._id%>"><button class="pro-button">Search
+                    again</button></a>
+            <a href="/auth/client/logout"><button class="pro-button" type="submit">Log out</button></a>
+        </div>
     </nav>
-<h1>What are you searching for today?</h1>
-<div class="searchForm1">
-    <form action="/auth/client/client-search" method="post">
-        <label class="proFormItem">Service Offered: </label>
-        <select class="proFormList" name="services" id="services">
-            <option value="null">Choose a service</option>
-            <option value="Babysitter">Babysitter</option>
-            <option value="Dogsitter">Dogsitter</option>
-            <option value="Hairstylist"> Hairstylist</option>
-            <option value="House Cleaning"> House Cleaning</option>
-            <option value="Landscaping">Landscaping</option>
-            <option value="Massage Therapy"> Massage Therapy</option>
-            <option value="Personal Trainer">Personal Trainer</option>
-        </select>
-        <button id="search-btn" class="pro-button" type="submit">Search</button>
-    </form>
-</div>
-</div>
 
+    <div class="searchForm1">
+        <p class="title2">What are you searching for today?</p>
+        <form class="proFormInput" action="/auth/client/client-search" method="post">
+            <select class="proFormList" name="services" id="services">
+                <option value="null">Choose a service</option>
+                <option value="Babysitter">Babysitter</option>
+                <option value="Dogsitter">Dogsitter</option>
+                <option value="Hairstylist"> Hairstylist</option>
+                <option value="House Cleaning"> House Cleaning</option>
+                <option value="Landscaping">Landscaping</option>
+                <option value="Massage Therapy"> Massage Therapy</option>
+                <option value="Personal Trainer">Personal Trainer</option>
+            </select>
+            <br>
+            <button id="search-btn" class="pro-button" type="submit">Search</button>
+        </form>
+
+    </div>
+</div>
