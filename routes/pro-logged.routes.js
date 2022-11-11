@@ -12,7 +12,7 @@ const uploader = require("../middleware/cloudinary.config");
 // GET route for displaying the signup form
 
 router.get("/pro-signup", (req, res, next) => {
-  res.render("Auth/pro-signup", {proBody: {firstname: "", lastname: "", email: "", password: "", postalcode: "", phone: "", city: ""}});
+  res.render("Auth/pro-signup", {proBody: {firstname: "", lastname: "", email: "", password: "", postalcode: "", phone: "", city: "", price: ""}});
 });
 
 router.post(
