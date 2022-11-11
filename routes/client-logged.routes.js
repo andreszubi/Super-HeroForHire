@@ -82,7 +82,7 @@ router.post("/client-login", async (req, res, next) => {
   const { email, password } = req.body;
   const loggedClientUser = await Client.findOne({ email });
   if (!loggedClientUser) {
-    res.render("Auth/client-login", {
+    res.render("/", {
       errorMessage:
         "Email is not registered or is incorrect. Try with another email.",
     });
@@ -92,7 +92,7 @@ router.post("/client-login", async (req, res, next) => {
       req.session.client = loggedClientUser;
       res.redirect(`/Auth/client/client-search/${loggedClientUser._id}`);
     } else {
-      res.render("Auth/client-login", {
+      res.render("/", {
         errorMessage: "Incorrect password!",
       });
     }

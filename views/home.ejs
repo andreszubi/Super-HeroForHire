@@ -21,6 +21,11 @@
                 <br>
                 <br>
                 <button class="client-loginBtn" type="submit">Login</button>
+                <% if (typeof errorMessage !=='undefined' ) { %>
+                    <p style="color: red">
+                        <%= errorMessage %>
+                    </p>
+                    <% } %>
             </form>
             <h3 class="signUpText">Not signed up yet?</h3>
             <br>
