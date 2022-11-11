@@ -13,8 +13,12 @@
             <input type="text" name="lastname" required />
             <label class="formInput">Email:</label>
             <input type="email" name="email" required />
-            <label class="formInput">Password: </label>
-            <input type="password" name="password" required /> //
+            <label class="formInput">Password: <% if (typeof errorMessage !=='undefined' ) { %>
+                <p style="color: red">
+                    <%= errorMessage %>
+                </p>
+                <% } %> </label>
+            <input type="password" name="password" required />
             <label class="formInput">City: </label>
             <input type="text" name="city" required />
             <label class="formInput">Postalcode: </label>
@@ -25,11 +29,6 @@
             <br>
             <button class="pro-button" type="submit">Signup</button>
         </form>
-        <% if (typeof errorMessage !=='undefined' ) { %>
-            <p style="color: red">
-                <%= errorMessage %>
-            </p>
-            <% } %>
     </div>
 </div>
 
