@@ -8,24 +8,25 @@
             <label class="formInput">Photo: *required</label>
             <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
-            <input type="text" name="firstname" required />
+            <input type="text" name="firstname" required value="<%= body.firstname %>" />
             <label class="formInput">Last Name:</label>
-            <input type="text" name="lastname" required />
+            <input type="text" name="lastname" required value="<%= body.lastname %>"/>
             <label class="formInput">Email:</label>
-            <input type="email" name="email" required />
+            <input type="email" name="email" required value="<%= body.email %>" />
             <label class="formInput">Password:  </label>
-            <input type="password" name="password" required placeholder="Must be at least 6 chars, one upper cased & one lower cased" />
+            <input type="password" name="password" required value="<%= body.password %>"
+             placeholder="Must be at least 6 chars, one upper cased & one lower cased" />
             <% if (typeof errorMessage !=='undefined' ) { %>
                 <p style="color: red">
                     <%= errorMessage %>
                 </p>
                 <% } %>
             <label class="formInput">City: </label>
-            <input type="text" name="city" required />
+            <input type="text" name="city" required value="<%= body.city %>" />
             <label class="formInput">Postalcode: </label>
-            <input type="text" name="postalcode" required />
+            <input type="text" name="postalcode" required value="<%= body.postalcode %>" />
             <label class="formInput">Phone Number: </label>
-            <input type="text" name="phone" required />
+            <input type="text" name="phone" required value="<%= body.phone %>" />
             <br>
             <br>
             <button class="pro-button" type="submit">Signup</button>

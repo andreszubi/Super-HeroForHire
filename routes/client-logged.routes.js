@@ -13,7 +13,7 @@ const uploader = require("../middleware/cloudinary.config");
 // GET route for displaying the signup form
 
 router.get("/client-signup", (req, res, next) => {
-  res.render("Auth/client-signup");
+  res.render("Auth/client-signup", {body: {firstname: "", lastname: "", email: "", password: "", postalcode: "", phone: "", city: ""}});
 });
 
 router.post(
