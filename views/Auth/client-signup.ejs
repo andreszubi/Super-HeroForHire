@@ -5,6 +5,7 @@
     <div class="proForm">
         <h1 class="title">Client Signup</h1>
         <form class="proFormInput" action="/auth/client/client-signup" method="post" enctype="multipart/form-data">
+            <label class="formInput">Photo: *required</label>
             <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
             <input type="text" name="firstname" required />
@@ -13,10 +14,7 @@
             <label class="formInput">Email:</label>
             <input type="email" name="email" required />
             <label class="formInput">Password: </label>
-            <input type="password" name="password" required  <%if(typeof error == "undefined"){%>
-         <% } else { %>
-                 <%= error.message%>
-            <%}%>/>
+            <input type="password" name="password" required />
             <label class="formInput">City: </label>
             <input type="text" name="city" required />
             <label class="formInput">Postalcode: </label>
