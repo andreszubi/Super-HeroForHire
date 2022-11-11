@@ -12,7 +12,7 @@ const uploader = require("../middleware/cloudinary.config");
 // GET route for displaying the signup form
 
 router.get("/pro-signup", (req, res, next) => {
-  res.render("Auth/pro-signup");
+  res.render("Auth/pro-signup", {proBody: {firstname: "", lastname: "", email: "", password: "", postalcode: "", phone: "", city: ""}});
 });
 
 router.post(
@@ -38,7 +38,7 @@ router.post(
 
       const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
       if (!passwordRegex.test(req.body.password)) {
-        res.render("Auth/pro-signup", {
+        res.render("Auth/pro-signup", { proBody: req.body,
           errorMessage:
             "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
         });

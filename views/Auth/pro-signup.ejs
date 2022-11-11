@@ -7,21 +7,21 @@
         <form class="proFormInput" action="/auth/pro/pro-signup" method="post" enctype="multipart/form-data">
             <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
-            <input type="text" name="firstname" required />
+            <input type="text" name="firstname" required value="<%= proBody.firstname %>"/>
             <label class="formInput">Last Name:</label>
-            <input type="text" name="lastname" required />
+            <input type="text" name="lastname" required value="<%= proBody.lastname %>" />
             <label class="formInput">Email:</label>
-            <input type="email" name="email" required />
+            <input type="email" name="email" required value="<%= proBody.email %>" />
             <label class="formInput">Password: </label>
-            <input type="password" name="password" required />
+            <input type="password" name="password" required value="<%= proBody.password %>" />
             <label class="formInput">City: </label>
-            <input type="text" name="city" required />
+            <input type="text" name="city" required value="<%= proBody.city %>" />
             <label class="formInput">Postalcode: </label>
-            <input type="text" name="postalcode" required />
+            <input type="text" name="postalcode" required value="<%= proBody.postalcode %>"  />
             <label class="formInput">Phone Number: </label>
-            <input type="text" name="phone" required />
+            <input type="text" name="phone" required value="<%= proBody.phone %>" />
             <label class="formInput">Price per hour: </label>
-            <input type="text" name="price" placeholder="Hourly rate" required />
+            <input type="text" name="price" placeholder="Hourly rate" required  value="<%proBody.price %>"/>
             <label class="formInput">Service Offered: </label>
             <select class="formInput" name="services" id="services">
                 <option class="proFormListOpt" value="null">Choose a service</option>
