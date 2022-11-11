@@ -7,47 +7,22 @@
         <form class="proFormInput" action="/auth/client/client-signup" method="post" enctype="multipart/form-data">
             <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
-            <input type="text" name="firstname" required  <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %>/>
+            <input type="text" name="firstname" required />
             <label class="formInput">Last Name:</label>
-            <input type="text" name="lastname" required <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %> />
+            <input type="text" name="lastname" required />
             <label class="formInput">Email:</label>
-            <input type="email" name="email" required  <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %> />
+            <input type="email" name="email" required />
             <label class="formInput">Password: </label>
-            <input type="password" name="password" required <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %> />
+            <input type="password" name="password" required  <%if(typeof error == "undefined"){%>
+         <% } else { %>
+                 <%= error.message%>
+            <%}%>/>
             <label class="formInput">City: </label>
-            <input type="text" name="city" required <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %> />
+            <input type="text" name="city" required />
             <label class="formInput">Postalcode: </label>
-            <input type="text" name="postalcode" required <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %> />
+            <input type="text" name="postalcode" required />
             <label class="formInput">Phone Number: </label>
-            <input type="text" name="phone" required <% if (typeof errorMessage !=='undefined' ) { %>
-                <p style="color: red">
-                    <%= errorMessage %>
-                </p>
-                <% } %> />
+            <input type="text" name="phone" required />
             <br>
             <br>
             <button class="pro-button" type="submit">Signup</button>
