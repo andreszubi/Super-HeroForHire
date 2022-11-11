@@ -132,6 +132,8 @@ https://github.com/andreszubi/Super-HeroForHire
 
 Deploy link:
 
+https://super-hero-for-hire.herokuapp.com/
+
 https://bright-gold-bee.cyclic.app/
 
 # Slides
