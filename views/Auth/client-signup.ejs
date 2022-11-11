@@ -14,7 +14,7 @@
             <label class="formInput">Email:</label>
             <input type="email" name="email" required />
             <label class="formInput">Password:  </label>
-            <input type="password" name="password" required />
+            <input type="password" name="password" required placeholder="Must be at least 6 chars, one upper cased & one lower cased" />
             <% if (typeof errorMessage !=='undefined' ) { %>
                 <p style="color: red">
                     <%= errorMessage %>
