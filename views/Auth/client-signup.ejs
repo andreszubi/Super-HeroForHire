@@ -8,13 +8,13 @@
             <label class="formInput">Photo: *required</label>
             <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
-            <input type="text" name="firstname" required value="<%= body.firstname %>" />
+            <input type="text" name="firstname" required value="<%= clientBody.firstname %>" />
             <label class="formInput">Last Name:</label>
-            <input type="text" name="lastname" required value="<%= body.lastname %>"/>
+            <input type="text" name="lastname" required value="<%= clientBody.lastname %>"/>
             <label class="formInput">Email:</label>
-            <input type="email" name="email" required value="<%= body.email %>" />
+            <input type="email" name="email" required value="<%= clientBody.email %>" />
             <label class="formInput">Password:  </label>
-            <input type="password" name="password" required value="<%= body.password %>"
+            <input type="password" name="password" required value="<%= clientBody.password %>"
              placeholder="Must be at least 6 chars, one upper cased & one lower cased" />
             <% if (typeof errorMessage !=='undefined' ) { %>
                 <p style="color: red">
@@ -22,11 +22,11 @@
                 </p>
                 <% } %>
             <label class="formInput">City: </label>
-            <input type="text" name="city" required value="<%= body.city %>" />
+            <input type="text" name="city" required value="<%= clientBody.city %>" />
             <label class="formInput">Postalcode: </label>
-            <input type="text" name="postalcode" required value="<%= body.postalcode %>" />
+            <input type="text" name="postalcode" required value="<%= clientBody.postalcode %>" />
             <label class="formInput">Phone Number: </label>
-            <input type="text" name="phone" required value="<%= body.phone %>" />
+            <input type="text" name="phone" required value="<%= clientBody.phone %>" />
             <br>
             <br>
             <button class="pro-button" type="submit">Signup</button>
