@@ -134,7 +134,7 @@ Deploy link:
 
 https://super-hero-for-hire.herokuapp.com/
 
-https://bright-gold-bee.cyclic.app/
+https://super-hero-for-hire.cyclic.app/
 
 # Slides
 
