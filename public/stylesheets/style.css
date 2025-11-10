@@ -366,8 +366,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem auto;
-  padding: 1rem;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
   animation: fadeInUp 0.6s ease-out;
   position: relative;
 }
@@ -502,9 +502,9 @@ body {
 .profInfo,
 .proForm {
   flex: 1;
-  min-width: 400px;
-  max-width: 600px;
-  padding: 3rem 2.5rem;
+  min-width: 450px;
+  max-width: 750px;
+  padding: 2.5rem 2rem;
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.95) 0%, 
     rgba(255, 255, 255, 0.9) 50%,
@@ -873,22 +873,23 @@ select {
 /* Home Content Wrapper - Side by Side Layout */
 .home-content-wrapper {
   display: flex;
-  gap: 2rem;
-  width: 90%;
-  max-width: 1400px;
-  margin: 1rem auto;
-  margin-bottom: 1rem;
+  gap: 1.5rem;
+  width: 95%;
+  max-width: 1600px;
+  margin: 0.5rem auto;
+  margin-bottom: 0.5rem;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   flex: 1;
+  padding: 0 1rem;
 }
 
 .headline-section {
   flex: 1;
-  min-width: 400px;
-  max-width: 600px;
-  padding: 3rem 2.5rem;
+  min-width: 450px;
+  max-width: 750px;
+  padding: 2.5rem 2rem;
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.95) 0%, 
     rgba(255, 255, 255, 0.9) 50%,
@@ -1408,10 +1409,10 @@ h3 {
    ============================================ */
 
 .card {
-  width: 100%;
-  max-width: 600px;
-  margin: 1.5rem auto;
-  padding: 2rem;
+  width: 95%;
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 2rem 1.75rem;
   border-radius: var(--radius-2xl);
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.95) 0%, 
@@ -1691,16 +1692,25 @@ a:hover {
   }
 
   .home-content-wrapper {
-    width: 95%;
-    gap: 1.5rem;
+    width: 98%;
+    gap: 1.25rem;
+    padding: 0 0.75rem;
   }
 
   .headline-section,
   .loginForm,
   .proForm,
   .profInfo {
-    min-width: 350px;
+    min-width: 400px;
     max-width: 100%;
+    padding: 2rem 1.75rem;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 100%;
+    margin: 0.75rem auto;
+    padding: 1.75rem 1.5rem;
   }
 
   .pro-button,
@@ -1755,9 +1765,10 @@ a:hover {
 
   .home-content-wrapper {
     flex-direction: column;
-    width: 95%;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    width: 98%;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
   }
 
   .loginForm,
@@ -1766,7 +1777,7 @@ a:hover {
     width: 100%;
     max-width: 100%;
     min-width: 100%;
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     margin: 0;
   }
 
@@ -1783,6 +1794,13 @@ a:hover {
     min-width: 100%;
     padding: 2rem 1.5rem;
     margin: 0;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 100%;
+    margin: 0.75rem auto;
+    padding: 1.5rem 1.25rem;
   }
 
   .headline-main {
@@ -1936,14 +1954,15 @@ a:hover {
   .home-content-wrapper {
     flex-direction: column;
     width: 98%;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
   }
 
   .loginForm,
   .proForm,
   .profInfo {
-    padding: 1.25rem;
+    padding: 1.75rem 1.25rem;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
@@ -1958,11 +1977,18 @@ a:hover {
 
 
   .headline-section {
-    padding: 1.5rem 1rem;
+    padding: 1.75rem 1.25rem;
     margin: 0;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 100%;
+    margin: 0.5rem auto;
+    padding: 1.5rem 1.25rem;
   }
 
   .headline-main {
@@ -2091,20 +2117,28 @@ a:hover {
 
   .home-content-wrapper {
     width: 98%;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0 0.25rem;
   }
 
   .loginForm,
   .proForm,
   .profInfo {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     min-width: 100%;
   }
 
   .headline-section {
-    padding: 1.25rem 0.75rem;
+    padding: 1.5rem 1rem;
     min-width: 100%;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 100%;
+    margin: 0.5rem auto;
+    padding: 1.25rem 1rem;
   }
 
   .social-footer {
