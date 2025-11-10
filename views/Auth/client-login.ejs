@@ -1,20 +1,31 @@
 <div class="bodyLoginForm">
+    <nav class="navbar">
+        <div>
+            <h2 class="brandName">We are here to make your daily life easier!</h2>
+        </div>
+        <div>
+            <a href="/"><button class="pro-button" type="button">Back to Home</button></a>
+            <a href="/auth/client/client-signup"><button class="pro-button" type="button">Sign up</button></a>
+        </div>
+    </nav>
+    
     <div class="brandImg2">
-        <img src="/images/logo.png">
+        <img src="/images/Logo.png" alt="logo">
     </div>
+    
     <div class="loginForm">
         <h1 class="title">Client Login</h1>
         <form class="loginFormInput" action="/auth/client/client-login" method="POST">
             <input class="formInput" type="email" name="email" placeholder="Email" />
             <input class="formInput" type="password" name="password" placeholder="Password" />
-            <br>
             <button class="pro-button" type="submit">Login</button>
+            <% if (typeof errorMessage !=='undefined' ) { %>
+                <p style="color: red">
+                    <%= errorMessage %>
+                </p>
+            <% } %>
         </form>
+        <h3 class="signUpText">Not signed up yet?</h3>
+        <a href="/auth/client/client-signup"><button class="client-signup">Sign up</button></a>
     </div>
 </div>
-
-<% if (typeof errorMessage !=='undefined' ) { %>
-    <p style="color: red">
-        <%= errorMessage %>
-    </p>
-    <% } %>
