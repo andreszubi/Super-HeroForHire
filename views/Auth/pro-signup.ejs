@@ -5,6 +5,7 @@
     <div class="proForm">
         <h1 class="title">Superhero Signup</h1>
         <form class="proFormInput" action="/auth/pro/pro-signup" method="post" enctype="multipart/form-data">
+            <label class="formInput">Photo: *required</label>
             <input type="file" name="imageUrl" accept="image/png, image/jpg">
             <label class="formInput">First Name:</label>
             <input type="text" name="firstname" required value="<%= proBody.firstname %>"/>
@@ -13,7 +14,8 @@
             <label class="formInput">Email:</label>
             <input type="email" name="email" required value="<%= proBody.email %>" />
             <label class="formInput">Password: </label>
-            <input type="password" name="password" required value="<%= proBody.password %>" />
+            <input type="password" name="password" required value="<%= proBody.password %>"
+             placeholder="Must be at least 6 chars, one upper cased & one lower cased" />
             <% if (typeof errorMessage !=='undefined' ) { %>
                 <p style="color: red">
                     <%= errorMessage %>
