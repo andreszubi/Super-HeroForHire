@@ -506,9 +506,9 @@ body {
   max-width: 600px;
   padding: 3rem 2.5rem;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.7) 0%, 
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.7) 100%);
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   border-radius: var(--radius-2xl);
@@ -524,8 +524,8 @@ body {
   align-items: center;
   animation: fadeInUp 0.6s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.8);
-  min-height: 500px;
-  justify-content: flex-start;
+  min-height: auto;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -539,15 +539,19 @@ body {
   width: 200%;
   height: 200%;
   background: radial-gradient(circle at 30% 30%, 
-    rgba(255, 255, 255, 0.4) 0%, 
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(132, 96, 238, 0.15) 40%,
-    transparent 70%);
+    rgba(255, 255, 255, 0.5) 0%, 
+    rgba(255, 192, 203, 0.2) 15%,
+    rgba(255, 255, 192, 0.2) 25%,
+    rgba(192, 255, 192, 0.2) 35%,
+    rgba(192, 255, 255, 0.2) 45%,
+    rgba(192, 192, 255, 0.2) 55%,
+    rgba(255, 192, 255, 0.2) 65%,
+    transparent 80%);
   animation: liquidGlow 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
-  opacity: 1;
-  filter: blur(20px);
+  opacity: 0.8;
+  filter: blur(25px);
 }
 
 .loginForm > *,
@@ -872,9 +876,9 @@ select {
   gap: 2rem;
   width: 90%;
   max-width: 1400px;
-  margin: 2rem auto;
-  margin-bottom: 2rem;
-  align-items: flex-start;
+  margin: 1rem auto;
+  margin-bottom: 1rem;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   flex: 1;
@@ -886,9 +890,9 @@ select {
   max-width: 600px;
   padding: 3rem 2.5rem;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.7) 0%, 
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.7) 100%);
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   border-radius: var(--radius-2xl);
@@ -902,8 +906,8 @@ select {
   animation: fadeInUp 0.8s ease-out;
   display: flex;
   flex-direction: column;
-  min-height: 500px;
-  justify-content: flex-start;
+  min-height: auto;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
@@ -916,15 +920,19 @@ select {
   width: 200%;
   height: 200%;
   background: radial-gradient(circle at 30% 30%, 
-    rgba(255, 255, 255, 0.4) 0%, 
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(251, 222, 89, 0.15) 40%,
-    transparent 70%);
+    rgba(255, 255, 255, 0.5) 0%, 
+    rgba(255, 192, 203, 0.2) 15%,
+    rgba(255, 255, 192, 0.2) 25%,
+    rgba(192, 255, 192, 0.2) 35%,
+    rgba(192, 255, 255, 0.2) 45%,
+    rgba(192, 192, 255, 0.2) 55%,
+    rgba(255, 192, 255, 0.2) 65%,
+    transparent 80%);
   animation: liquidGlow 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
-  opacity: 1;
-  filter: blur(20px);
+  opacity: 0.8;
+  filter: blur(25px);
 }
 
 .headline-section > * {
@@ -968,9 +976,9 @@ select {
   gap: 0.75rem;
   padding: 1.5rem 1rem;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.7) 0%, 
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.7) 100%);
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   border-radius: var(--radius-xl);
@@ -990,6 +998,29 @@ select {
   overflow: hidden;
 }
 
+.service-item::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.4) 0%, 
+    rgba(255, 192, 203, 0.15) 15%,
+    rgba(255, 255, 192, 0.15) 25%,
+    rgba(192, 255, 192, 0.15) 35%,
+    rgba(192, 255, 255, 0.15) 45%,
+    rgba(192, 192, 255, 0.15) 55%,
+    rgba(255, 192, 255, 0.15) 65%,
+    transparent 80%);
+  animation: liquidGlow 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+  filter: blur(20px);
+}
+
 .service-item::before {
   content: "";
   position: absolute;
@@ -999,10 +1030,11 @@ select {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent, 
-    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.3), 
     transparent
   );
   transition: left 0.5s ease;
+  z-index: 1;
 }
 
 .service-item:hover::before {
@@ -1027,10 +1059,15 @@ select {
               inset 0 -2px 0 rgba(255, 255, 255, 0.4),
               0 0 0 1px rgba(255, 255, 255, 0.8);
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.8) 0%, 
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.8) 100%);
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.98) 100%);
   backdrop-filter: blur(40px) saturate(250%);
+}
+
+.service-item:hover::after {
+  opacity: 0.9;
+  filter: blur(25px);
 }
 
 .service-icon {
@@ -1070,9 +1107,9 @@ select {
   gap: 1rem;
   padding: 2rem 1.5rem;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.7) 0%, 
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.7) 100%);
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   border-radius: var(--radius-xl);
@@ -1093,6 +1130,29 @@ select {
   overflow: hidden;
 }
 
+.benefit-item::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.4) 0%, 
+    rgba(255, 192, 203, 0.15) 15%,
+    rgba(255, 255, 192, 0.15) 25%,
+    rgba(192, 255, 192, 0.15) 35%,
+    rgba(192, 255, 255, 0.15) 45%,
+    rgba(192, 192, 255, 0.15) 55%,
+    rgba(255, 192, 255, 0.15) 65%,
+    transparent 80%);
+  animation: liquidGlow 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+  filter: blur(20px);
+}
+
 .benefit-item::before {
   content: "";
   position: absolute;
@@ -1102,10 +1162,11 @@ select {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent, 
-    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.3), 
     transparent
   );
   transition: left 0.5s ease;
+  z-index: 1;
 }
 
 .benefit-item:hover::before {
@@ -1126,10 +1187,15 @@ select {
               inset 0 -2px 0 rgba(255, 255, 255, 0.4),
               0 0 0 1px rgba(255, 255, 255, 0.8);
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.8) 0%, 
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.8) 100%);
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.98) 100%);
   backdrop-filter: blur(40px) saturate(250%);
+}
+
+.benefit-item:hover::after {
+  opacity: 0.9;
+  filter: blur(25px);
 }
 
 .benefit-icon {
@@ -1348,9 +1414,9 @@ h3 {
   padding: 2rem;
   border-radius: var(--radius-2xl);
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.7) 0%, 
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.7) 100%);
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%);
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
   box-shadow: 0 20px 60px 0 rgba(31, 38, 135, 0.3),
@@ -1378,15 +1444,19 @@ h3 {
   width: 200%;
   height: 200%;
   background: radial-gradient(circle at 30% 30%, 
-    rgba(255, 255, 255, 0.4) 0%, 
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(132, 96, 238, 0.15) 40%,
-    transparent 70%);
+    rgba(255, 255, 255, 0.5) 0%, 
+    rgba(255, 192, 203, 0.2) 15%,
+    rgba(255, 255, 192, 0.2) 25%,
+    rgba(192, 255, 192, 0.2) 35%,
+    rgba(192, 255, 255, 0.2) 45%,
+    rgba(192, 192, 255, 0.2) 55%,
+    rgba(255, 192, 255, 0.2) 65%,
+    transparent 80%);
   animation: liquidGlow 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
-  opacity: 1;
-  filter: blur(20px);
+  opacity: 0.8;
+  filter: blur(25px);
 }
 
 .card > * {
@@ -1415,14 +1485,14 @@ h3 {
   border-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(50px) saturate(250%);
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.8) 0%, 
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.8) 100%);
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0.98) 100%);
 }
 
 .card:hover::before {
-  opacity: 1.2;
-  filter: blur(30px);
+  opacity: 1;
+  filter: blur(35px);
 }
 
 .userImg {
