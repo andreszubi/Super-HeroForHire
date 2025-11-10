@@ -78,39 +78,121 @@ body {
 }
 
 /* ============================================
-   NAVIGATION BAR
+   NAVIGATION BAR - SOPHISTICATED & FLASHY
    ============================================ */
 
 .navbar {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, #1a0d4a 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #1a0d4a 50%, var(--primary-dark) 100%);
+  background-size: 200% 200%;
   color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: var(--shadow-lg);
+  padding: 1.25rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+              0 0 40px rgba(102, 63, 219, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 2px solid rgba(132, 96, 238, 0.3);
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(132, 96, 238, 0.2), 
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(132, 96, 238, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(251, 222, 89, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .brandName {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin: 0;
-  background: linear-gradient(135deg, var(--white) 0%, var(--accent-yellow-light) 100%);
+  background: linear-gradient(135deg, 
+    var(--white) 0%, 
+    var(--accent-yellow-light) 50%,
+    var(--white) 100%
+  );
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.02em;
+  text-shadow: 0 0 30px rgba(251, 222, 89, 0.5);
+  animation: textShimmer 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes textShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .navbar > div {
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================================
@@ -134,7 +216,9 @@ body {
   border: none;
   cursor: pointer;
   background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 15px rgba(102, 63, 219, 0.4),
+              0 0 20px rgba(132, 96, 238, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .pro-button::before,
@@ -154,8 +238,9 @@ body {
 .pro-button:hover,
 .client-signup:hover,
 .client-loginBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 63, 219, 0.5),
+              0 0 30px rgba(132, 96, 238, 0.4);
   color: var(--white);
 }
 
@@ -232,8 +317,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  align-items: center;
   animation: fadeInUp 0.6s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.loginForm > h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.loginForm > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .proForm {
@@ -246,6 +344,18 @@ body {
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
+  align-items: center;
+}
+
+.loginFormInput > .formInput,
+.proFormInput > .formInput {
+  width: 100%;
+  max-width: 100%;
+}
+
+.loginFormInput > button,
+.proFormInput > button {
+  margin-top: 0.5rem;
 }
 
 .formInput {
@@ -294,6 +404,33 @@ body {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
+}
+
+.signUpText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+/* Center the sign up button */
+.loginForm > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.loginForm > a > .client-signup {
+  width: auto;
+  min-width: 200px;
 }
 
 .title2 {
@@ -626,23 +763,53 @@ a:hover {
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - IMPROVED
    ============================================ */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .brandName {
+    font-size: 1.35rem;
+  }
+
+  .pro-button,
+  .client-signup,
+  .client-loginBtn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
 
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    animation: none;
+  }
+
+  .navbar::before,
+  .navbar::after {
+    animation: none;
   }
 
   .brandName {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     text-align: center;
+    animation: none;
   }
 
   .navbar > div {
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar > div:first-child {
+    width: 100%;
     justify-content: center;
   }
 
@@ -651,6 +818,8 @@ a:hover {
   .client-loginBtn {
     padding: 0.625rem 1.25rem;
     font-size: 0.75rem;
+    width: 100%;
+    max-width: 200px;
   }
 
   .loginForm,
@@ -661,15 +830,26 @@ a:hover {
     margin: 1rem auto;
   }
 
+  .loginFormInput,
+  .proFormInput {
+    width: 100%;
+  }
+
+  .formInput {
+    width: 100%;
+  }
+
   .card {
     flex-direction: column;
     text-align: center;
     padding: 1.5rem;
+    max-width: 100%;
   }
 
   .profObj {
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
   }
 
   .title {
@@ -684,6 +864,10 @@ a:hover {
   .brandImg2 img {
     max-width: 200px;
   }
+
+  .signUpText {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -693,25 +877,91 @@ a:hover {
 
   .navbar {
     padding: 0.75rem;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .brandName {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .navbar > div {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .pro-button,
+  .client-signup,
+  .client-loginBtn {
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    width: 100%;
+    max-width: 180px;
   }
 
   .loginForm,
   .proForm,
   .profInfo {
     padding: 1.25rem;
+    width: 98%;
+  }
+
+  .loginForm > a > .client-signup {
+    min-width: 180px;
   }
 
   .card {
     padding: 1.25rem;
+    gap: 1rem;
   }
 
   .userImg {
     width: 100px;
     height: 100px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .title2 {
+    font-size: 1.5rem;
+  }
+
+  .signUpText {
+    font-size: 0.95rem;
+  }
+
+  .brandImg img,
+  .brandImg2 img {
+    max-width: 150px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .brandName {
+    font-size: 0.85rem;
+  }
+
+  .pro-button,
+  .client-signup,
+  .client-loginBtn {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.65rem;
+    max-width: 160px;
+  }
+
+  .loginForm,
+  .proForm,
+  .profInfo {
+    padding: 1rem;
   }
 }
 
