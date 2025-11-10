@@ -11,13 +11,18 @@ module.exports = (app) => {
   // but will become a real "app" in the app.js
   // when this file gets imported/required there
 
+  // Check for required environment variables in production
+  if (process.env.NODE_ENV === "production" && !process.env.SESS_SECRET) {
+    throw new Error("SESS_SECRET environment variable is required in production");
+  }
+
   // required for the app when deployed to Heroku (in production)
   app.set("trust proxy", 1);
 
   // use session
   app.use(
     session({
-      secret: process.env.SESS_SECRET,
+      secret: process.env.SESS_SECRET || "dev-secret-change-in-production",
       resave: true,
       saveUninitialized: false,
       cookie: {
