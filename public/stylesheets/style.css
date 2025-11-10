@@ -392,8 +392,8 @@ body {
 .profInfo,
 .proForm {
   flex: 1;
-  min-width: 350px;
-  max-width: 450px;
+  min-width: 400px;
+  max-width: 600px;
   padding: 2.5rem;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -1329,6 +1329,7 @@ a:hover {
   .profInfo {
     width: 100%;
     max-width: 100%;
+    min-width: 100%;
     padding: 1.5rem;
     margin: 0;
   }
@@ -1336,6 +1337,7 @@ a:hover {
   .headline-section {
     width: 100%;
     max-width: 100%;
+    min-width: 100%;
     padding: 2rem 1.5rem;
     margin: 0;
   }
@@ -1469,6 +1471,7 @@ a:hover {
     padding: 1.25rem;
     width: 100%;
     max-width: 100%;
+    min-width: 100%;
     margin: 0;
   }
 
@@ -1477,6 +1480,7 @@ a:hover {
     margin: 0;
     width: 100%;
     max-width: 100%;
+    min-width: 100%;
   }
 
   .headline-main {
