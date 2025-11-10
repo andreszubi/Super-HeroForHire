@@ -6,12 +6,8 @@
         <div class="profObj">
                 <div class="profBtn">
                         <img class="userImg" src=<%=professional.image%>>
-                        <br>
-                        <br>
                         <a href="/auth/pro/pro-profile-edit/<%= professional._id %>/"><button class="pro-button"
                                         type="submit">Edit profile</button></a>
-                        <br>
-                        <br>
                         <form method="POST" action="/auth/pro/pro-profile/delete/<%=professional.id%>?_method=DELETE">
                                 <button class="deleteBtn pro-button" type="submit">Delete profile</button>
                         </form>

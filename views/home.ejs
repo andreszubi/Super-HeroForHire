@@ -16,10 +16,8 @@
         <div class="loginForm">
             <h3>Log in to find a superhero to make your life easier!</h3>
             <form class="loginFormInput" method="POST" action="/auth/client/client-login">
-                <input class="formInput" type="text" name="email" placeholder="Email" required /></label>
-                <input class="formInput" type="password" name="password" placeholder="Password" required /></label>
-                <br>
-                <br>
+                <input class="formInput" type="text" name="email" placeholder="Email" required />
+                <input class="formInput" type="password" name="password" placeholder="Password" required />
                 <button class="client-loginBtn" type="submit">Login</button>
                 <% if (typeof errorMessage !=='undefined' ) { %>
                     <p style="color: red">
@@ -28,7 +26,6 @@
                     <% } %>
             </form>
             <h3 class="signUpText">Not signed up yet?</h3>
-            <br>
             <a href="/auth/client/client-signup"><button class="client-signup">Sign up</button></a>
         </div>
     </div>

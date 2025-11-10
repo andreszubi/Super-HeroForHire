@@ -411,6 +411,7 @@ body {
 .loginForm > h3 {
   text-align: center;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .loginForm > form {
@@ -418,6 +419,33 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+}
+
+/* Modern login form layout - compact and intuitive */
+.loginFormInput {
+  gap: 1rem;
+}
+
+.loginFormInput > button {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* Remove spacing from br tags in forms */
+.loginFormInput > br,
+.proFormInput > br {
+  display: none;
+}
+
+.signUpText {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 0.95rem;
+  color: var(--gray-600);
+}
+
+.loginForm > a {
+  margin-top: 0;
 }
 
 .proForm {
@@ -501,6 +529,7 @@ input[type="file"] {
   cursor: pointer;
   border: 2px dashed var(--gray-300);
   background-color: var(--gray-50);
+  position: relative;
 }
 
 input[type="file"]:hover {
@@ -512,6 +541,43 @@ input[type="file"]:focus {
   border-color: var(--primary-purple);
   border-style: solid;
   background-color: var(--white);
+}
+
+/* Photo preview container */
+.photo-preview-container {
+  display: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.photo-preview-container.active {
+  display: block;
+}
+
+.photo-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 4px solid var(--primary-purple-light);
+  box-shadow: var(--shadow-lg);
+  margin: 0 auto;
+  display: block;
+  transition: all var(--transition-base);
+}
+
+.photo-preview:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.photo-preview-label {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  font-weight: 500;
 }
 
 /* Select dropdown styling */
@@ -632,11 +698,11 @@ select {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  margin: 1rem 0;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--gray-700);
+  margin: 0.5rem 0 0.25rem 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--gray-600);
 }
 
 /* Center the sign up button */
@@ -645,7 +711,7 @@ select {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0;
 }
 
 .loginForm > a > .client-signup {
@@ -711,8 +777,24 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 1.5rem;
+}
+
+.profBtn > br {
+  display: none;
+}
+
+.profBtn > a,
+.profBtn > form {
+  margin: 0;
+  width: 100%;
+  max-width: 200px;
+}
+
+.profBtn > form {
+  display: flex;
+  justify-content: center;
 }
 
 .mainProf {

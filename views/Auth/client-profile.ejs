@@ -11,12 +11,8 @@
   <div class="profObj">
     <div class="profBtn">
       <img class="userImg" src=<%=client.image%>>
-      <br>
-      <br>
       <a href="/auth/client/client-profile-edit/<%= client._id %>/"><button class="pro-button" type="submit">Edit
           profile</button></a>
-      <br>
-      <br>
       <form method="POST" action="/auth/client/client-profile/delete/<%=client.id%>?_method=DELETE">
         <button class="deleteBtn pro-button" type="submit">Delete profile</button>
       </form>
