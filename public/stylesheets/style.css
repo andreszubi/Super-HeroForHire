@@ -86,7 +86,7 @@ body {
   background-size: 200% 200%;
   color: var(--white);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 1.25rem 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
@@ -100,6 +100,22 @@ body {
   animation: gradientShift 8s ease infinite;
   position: relative;
   overflow: hidden;
+  gap: 2rem;
+}
+
+.navbar > div:first-child {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  right: 2rem;
 }
 
 .navbar::before {
@@ -159,23 +175,44 @@ body {
 
 .brandName {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.75rem;
+  font-weight: 900;
   margin: 0;
   background: linear-gradient(135deg, 
     var(--white) 0%, 
-    var(--accent-yellow-light) 50%,
-    var(--white) 100%
+    var(--accent-yellow-light) 30%,
+    var(--primary-purple-light) 60%,
+    var(--accent-yellow-light) 100%
   );
-  background-size: 200% 200%;
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -0.02em;
-  text-shadow: 0 0 30px rgba(251, 222, 89, 0.5);
-  animation: textShimmer 3s ease-in-out infinite;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 40px rgba(251, 222, 89, 0.6),
+               0 0 60px rgba(132, 96, 238, 0.4);
+  animation: textShimmer 2.5s ease-in-out infinite,
+             textPulse 3s ease-in-out infinite;
   position: relative;
   z-index: 1;
+  text-align: center;
+  transform: scale(1);
+  transition: transform var(--transition-base);
+}
+
+.brandName:hover {
+  transform: scale(1.05);
+  animation: textShimmer 1.5s ease-in-out infinite,
+             textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 20px rgba(251, 222, 89, 0.5));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 40px rgba(251, 222, 89, 0.8));
+  }
 }
 
 @keyframes textShimmer {
@@ -394,7 +431,7 @@ body {
   flex: 1;
   min-width: 400px;
   max-width: 600px;
-  padding: 2.5rem;
+  padding: 3rem 2.5rem;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-2xl);
@@ -406,7 +443,8 @@ body {
   align-items: center;
   animation: fadeInUp 0.6s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  height: fit-content;
+  min-height: 500px;
+  justify-content: flex-start;
 }
 
 .loginForm > h3 {
@@ -696,7 +734,7 @@ select {
   flex: 1;
   min-width: 400px;
   max-width: 600px;
-  padding: 2.5rem;
+  padding: 3rem 2.5rem;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-2xl);
@@ -706,7 +744,8 @@ select {
   animation: fadeInUp 0.8s ease-out;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  min-height: 500px;
+  justify-content: flex-start;
 }
 
 .headline-main {
@@ -1298,15 +1337,18 @@ a:hover {
     animation: none;
   }
 
-  .navbar > div {
-    flex-wrap: wrap;
-    justify-content: center;
+  .navbar > div:first-child {
+    flex: 1;
     width: 100%;
+    justify-content: center;
   }
 
-  .navbar > div:first-child {
+  .navbar > div:last-child {
+    position: relative;
+    right: auto;
     width: 100%;
     justify-content: center;
+    margin-top: 0.5rem;
   }
 
   .pro-button,
@@ -1444,9 +1486,17 @@ a:hover {
     line-height: 1.3;
   }
 
-  .navbar > div {
-    flex-direction: column;
+  .navbar > div:first-child {
     width: 100%;
+    justify-content: center;
+  }
+
+  .navbar > div:last-child {
+    position: relative;
+    right: auto;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
     gap: 0.5rem;
   }
 

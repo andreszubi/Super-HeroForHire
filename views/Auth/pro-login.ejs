@@ -1,7 +1,7 @@
 <div class="bodyLoginForm">
     <nav class="navbar">
         <div>
-            <h2 class="brandName">We are here to make your daily life easier</h2>
+            <h2 class="brandName">We are here to make your daily life easier!</h2>
         </div>
         <div>
             <a href="/"><button class="pro-button" type="button">Back to Home</button></a>
@@ -44,13 +44,20 @@
         </div>
         
         <div class="loginForm">
-        <h1 class="title">Superhero Login</h1>
-        <form class="loginFormInput" action="/auth/pro/pro-login" method="POST">
-            <input class="formInput" type="email" name="email" placeholder="Email" />
-            <input class="formInput" type="password" name="password" placeholder="Password" />
-            <button class="pro-button" type="submit">Login</button>
-        </form>
-    </div>
+            <h1 class="title">Superhero Login</h1>
+            <form class="loginFormInput" action="/auth/pro/pro-login" method="POST">
+                <input class="formInput" type="email" name="email" placeholder="Email" />
+                <input class="formInput" type="password" name="password" placeholder="Password" />
+                <button class="pro-button" type="submit">Login</button>
+                <% if (typeof errorMessage !=='undefined' ) { %>
+                    <p style="color: red">
+                        <%= errorMessage %>
+                    </p>
+                <% } %>
+            </form>
+            <h3 class="signUpText">Not signed up yet?</h3>
+            <a href="/auth/pro/pro-signup"><button class="client-signup">Sign up</button></a>
+        </div>
     </div>
 </div>
 
