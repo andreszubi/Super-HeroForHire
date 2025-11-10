@@ -366,40 +366,59 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem auto;
-  padding: 0.75rem;
+  margin: 2rem auto 1rem auto;
+  padding: 1.5rem;
   animation: fadeInUp 0.6s ease-out;
   position: relative;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.95) 100%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  box-shadow: 0 20px 60px 0 rgba(31, 38, 135, 0.3),
+              0 8px 32px 0 rgba(31, 38, 135, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+              0 0 0 1px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  max-width: 500px;
 }
 
 .brandImg::before,
 .brandImg2::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, 
-    rgba(132, 96, 238, 0.2) 0%, 
-    rgba(251, 222, 89, 0.15) 30%,
-    transparent 70%);
-  animation: logoGlow 3s ease-in-out infinite;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.5) 0%, 
+    rgba(255, 192, 203, 0.2) 15%,
+    rgba(255, 255, 192, 0.2) 25%,
+    rgba(192, 255, 192, 0.2) 35%,
+    rgba(192, 255, 255, 0.2) 45%,
+    rgba(192, 192, 255, 0.2) 55%,
+    rgba(255, 192, 255, 0.2) 65%,
+    transparent 80%);
+  animation: liquidGlow 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
-  border-radius: 50%;
-  filter: blur(40px);
+  opacity: 0.8;
+  filter: blur(25px);
 }
 
 .brandImg2 {
-  margin-top: 0;
-  padding-top: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .brandImg img,
 .brandImg2 img {
-  max-width: 340px;
+  max-width: 400px;
   width: 100%;
   height: auto;
   image-rendering: -webkit-optimize-contrast;
@@ -431,11 +450,20 @@ body {
   animation-play-state: paused;
 }
 
+.brandImg:hover,
+.brandImg2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 70px 0 rgba(31, 38, 135, 0.35),
+              0 10px 40px 0 rgba(31, 38, 135, 0.25),
+              inset 0 2px 0 rgba(255, 255, 255, 0.95),
+              inset 0 -2px 0 rgba(255, 255, 255, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
 .brandImg:hover::before,
 .brandImg2:hover::before {
-  animation: logoGlowPulse 1s ease-in-out infinite;
-  width: 460px;
-  height: 460px;
+  opacity: 1;
+  filter: blur(30px);
 }
 
 @keyframes logoFloat {
@@ -1979,21 +2007,16 @@ a:hover {
     font-size: 2rem;
   }
 
+  .brandImg,
+  .brandImg2 {
+    max-width: 450px;
+    padding: 1.25rem;
+    margin: 1.5rem auto 0.75rem auto;
+  }
+
   .brandImg img,
   .brandImg2 img {
-    max-width: 280px;
-  }
-
-  .brandImg::before,
-  .brandImg2::before {
-    width: 360px;
-    height: 360px;
-  }
-
-  .brandImg:hover::before,
-  .brandImg2:hover::before {
-    width: 400px;
-    height: 400px;
+    max-width: 320px;
   }
 
   .signUpText {
@@ -2080,21 +2103,16 @@ a:hover {
     padding: 1.5rem 1.25rem;
   }
 
+  .brandImg,
+  .brandImg2 {
+    max-width: 400px;
+    padding: 1rem;
+    margin: 1.25rem auto 0.5rem auto;
+  }
+
   .brandImg img,
   .brandImg2 img {
-    max-width: 240px;
-  }
-
-  .brandImg::before,
-  .brandImg2::before {
-    width: 300px;
-    height: 300px;
-  }
-
-  .brandImg:hover::before,
-  .brandImg2:hover::before {
-    width: 340px;
-    height: 340px;
+    max-width: 280px;
   }
 
   .headline-main {
@@ -2197,33 +2215,16 @@ a:hover {
     font-size: 0.95rem;
   }
 
+  .brandImg,
+  .brandImg2 {
+    max-width: 350px;
+    padding: 0.875rem;
+    margin: 1rem auto 0.5rem auto;
+  }
+
   .brandImg img,
   .brandImg2 img {
-    max-width: 200px;
-  }
-
-  .brandImg::before,
-  .brandImg2::before {
-    width: 260px;
-    height: 260px;
-  }
-
-  .brandImg:hover::before,
-  .brandImg2:hover::before {
-    width: 300px;
-    height: 300px;
-  }
-
-  .brandImg::before,
-  .brandImg2::before {
-    width: 240px;
-    height: 240px;
-  }
-
-  .brandImg:hover::before,
-  .brandImg2:hover::before {
-    width: 280px;
-    height: 280px;
+    max-width: 240px;
   }
 }
 
