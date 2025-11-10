@@ -1447,6 +1447,29 @@ a:hover {
     font-size: 0.9rem;
   }
 
+  .social-footer {
+    padding: 2rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .social-footer-title {
+    font-size: 1.25rem;
+  }
+
+  .social-icons-container {
+    gap: 1.5rem;
+  }
+
+  .social-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .social-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .loginFormInput,
   .proFormInput {
     width: 100%;
@@ -1607,6 +1630,30 @@ a:hover {
     font-size: 0.85rem;
   }
 
+  .social-footer {
+    padding: 1.5rem 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-footer-title {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .social-icons-container {
+    gap: 1rem;
+  }
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
   .loginForm > a > .client-signup {
     min-width: 180px;
   }
@@ -1703,4 +1750,158 @@ p[style*="color: red"] {
 *:focus-visible {
   outline: 2px solid var(--primary-purple);
   outline-offset: 2px;
+}
+
+/* ============================================
+   SOCIAL MEDIA FOOTER
+   ============================================ */
+
+.social-footer {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #1a0d4a 50%, var(--primary-dark) 100%);
+  background-size: 200% 200%;
+  border-top: 3px solid rgba(132, 96, 238, 0.5);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2),
+              0 -4px 20px rgba(102, 63, 219, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 8s ease infinite;
+}
+
+.social-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(132, 96, 238, 0.2), 
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+.social-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.social-footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(251, 222, 89, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.social-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(132, 96, 238, 0.3);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.social-icon:nth-child(1) { animation-delay: 0.1s; }
+.social-icon:nth-child(2) { animation-delay: 0.2s; }
+.social-icon:nth-child(3) { animation-delay: 0.3s; }
+.social-icon:nth-child(4) { animation-delay: 0.4s; }
+.social-icon:nth-child(5) { animation-delay: 0.5s; }
+
+.social-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all var(--transition-base);
+}
+
+.social-icon:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.social-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--white);
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  border-color: var(--primary-purple-light);
+  box-shadow: 0 8px 25px rgba(102, 63, 219, 0.5),
+              0 0 30px rgba(132, 96, 238, 0.4),
+              inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover svg {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(251, 222, 89, 0.4));
+}
+
+/* Individual icon colors on hover */
+.social-icon.instagram:hover {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: #bc1888;
+}
+
+.social-icon.facebook:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+}
+
+.social-icon.twitter:hover {
+  background: #000000;
+  border-color: #000000;
+}
+
+.social-icon.tiktok:hover {
+  background: linear-gradient(135deg, #000000 0%, #ff0050 100%);
+  border-color: #ff0050;
+}
+
+.social-icon.youtube:hover {
+  background: #ff0000;
+  border-color: #ff0000;
+}
+
+.social-icon:active {
+  transform: translateY(-2px) scale(1.05);
 }
